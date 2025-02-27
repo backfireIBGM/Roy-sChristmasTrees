@@ -9,5 +9,5 @@ document.body.innerHTML += '<img src="WreathWithCandle.jpg" id="wreath-candle">'
 document.body.innerHTML += '<h3>Address</h3>';
 document.body.innerHTML += '<p>This is paragraph text</p>';
 
-document.body.innerHTML += '<h3>phone number</h3>';
-document.body.innerHTML += '<p>(707)-###-####)</p>';
+document.body.innerHTML += '<h3> Phone Number</h3>';
+document.body.innerHTML += '<p>(707)-###-####</p>';
