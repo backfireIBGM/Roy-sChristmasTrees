@@ -1,0 +1,37 @@
+header {
+    font-size: xxx-large;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#ornaments {
+  width: 20%;
+  height: auto; /* Maintains aspect ratio */
+}
+
+#roy-farm {
+  width: 20%;
+  height: auto; /* Maintains aspect ratio */
+}
+
+#tree {
+  width: 20%;
+  height: auto; /* Maintains aspect ratio */
+}
+
+#wreath {
+  width: 20%;
+  height: auto; /* Maintains aspect ratio */
+}
+
+#wreath-candle {
+    width: 20%;
+    height: auto; /* Maintains aspect ratio */
+  }
