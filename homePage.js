@@ -1,9 +1,9 @@
-document.body.appendChild(Object.assign(document.createElement('img'), {id: 'logo', src: 'logo.jpg'}));
+document.body.appendChild(Object.assign(document.createElement('img'), {id: 'logo', src: 'SVGLogo.jpg'}));
 
 
   // Create header
   const header = document.createElement('header');
-  header.textContent = "Roy's Christmas Trees";
+  header.textContent = "";
   document.body.appendChild(header);
   
   // Create address section
