@@ -1,3 +1,6 @@
+document.body.appendChild(Object.assign(document.createElement('img'), {id: 'logo', src: 'logo.jpg'}));
+
+
   // Create header
   const header = document.createElement('header');
   header.textContent = "Roy's Christmas Trees";
@@ -294,6 +297,8 @@
   // Initialize both carousels
   updateCarousel1();
   updateCarousel2();
+
+
 
 
 
