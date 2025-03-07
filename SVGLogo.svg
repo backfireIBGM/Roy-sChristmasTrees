@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Background with border -->
+  <rect x="10" y="10" width="580" height="380" fill="#f5f5f0" stroke="#9b2226" stroke-width="8"/>
+  <rect x="25" y="25" width="550" height="350" fill="none" stroke="#9b2226" stroke-width="2"/>
+  
+  <!-- Trees are placed FIRST in the layer order -->
+  <!-- Left evergreen trees (2 more detailed trees) -->
+  <path d="M80,150 L60,220 L100,220 Z" fill="#1b4332"/>
+  <path d="M80,200 L50,280 L110,280 Z" fill="#1b4332"/>
+  <path d="M80,260 L40,350 L120,350 Z" fill="#1b4332"/>
+  
+  <path d="M140,170 L120,240 L160,240 Z" fill="#1b4332"/>
+  <path d="M140,220 L110,300 L170,300 Z" fill="#1b4332"/>
+  <path d="M140,280 L100,370 L180,370 Z" fill="#1b4332"/>
+  
+  <!-- Right evergreen trees (2 more detailed trees) -->
+  <path d="M460,150 L440,220 L480,220 Z" fill="#1b4332"/>
+  <path d="M460,200 L430,280 L490,280 Z" fill="#1b4332"/>
+  <path d="M460,260 L420,350 L500,350 Z" fill="#1b4332"/>
+  
+  <path d="M520,170 L500,240 L540,240 Z" fill="#1b4332"/>
+  <path d="M520,220 L490,300 L550,300 Z" fill="#1b4332"/>
+  <path d="M520,280 L480,370 L560,370 Z" fill="#1b4332"/>
+  
+  <!-- Text elements are placed AFTER trees so they appear on top -->
+  <!-- Text: ROY'S moved up -->
+  <text x="300" y="80" font-family="Times New Roman, serif" font-weight="bold" font-size="48" text-anchor="middle" fill="#2a2a2a">ROY'S</text>
+  
+  <!-- Text: CHRISTMAS TREES (in rainbow/arc shape with transparent background) -->
+  <path id="curve" d="M60,230 C170,100 430,100 540,230" fill="none" stroke="none"/>
+  <text font-family="Times New Roman, serif" font-weight="bold" font-size="44" fill="#2a2a2a">
+    <textPath href="#curve" startOffset="50%" text-anchor="middle">CHRISTMAS TREES</textPath>
+  </text>
+  
+  <!-- Text: HOME GROWN (moved down) -->
+  <text x="300" y="240" font-family="Times New Roman, serif" font-size="24" text-anchor="middle" fill="#2a2a2a">HOME GROWN</text>
+  
+  <!-- Text: HUMBOLDT CO, TREES (moved down) -->
+  <text x="300" y="275" font-family="Times New Roman, serif" font-size="24" text-anchor="middle" fill="#2a2a2a">HUMBOLDT CO, TREES</text>
+  
+  <!-- Text: SINCE 1982 (moved down) -->
+  <text x="300" y="310" font-family="Times New Roman, serif" font-size="24" text-anchor="middle" fill="#2a2a2a">SINCE 1982</text>
+</svg>
