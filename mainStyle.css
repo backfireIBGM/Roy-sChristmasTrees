@@ -85,22 +85,6 @@ h1 {
   max-width: 800px;
 }
 
-/* Row for carousels side-by-side display */
-.carousel-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  margin: 30px 0;
-}
-
-/* Row for paragraphs side-by-side display */
-.paragraph-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  margin: 30px 0;
-}
-
 /* Paragraph container */
 .paragraph-container {
   width: 48%;
@@ -148,14 +132,6 @@ h1 {
   object-fit: contain;
 }
 
-/* Individual image styling for when not in carousel */
-#ornaments, #roy-farm, #tree, #wreath, #wreath-candle {
-  width: 20vw;
-  height: 20vw;
-  object-fit: cover;
-  object-position: center;
-}
-
 /* Carousel Controls (Next/Prev buttons) */
 .carousel-controls {
   display: flex;
@@ -185,15 +161,6 @@ h1 {
 
 .carousel-btn:hover {
   background: rgba(0, 0, 0, 0.7);
-}
-
-/* Carousel Indicators (Dots) */
-.carousel-indicators {
-  display: none;
-  justify-content: center;
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
 }
 
 .indicator {
@@ -228,26 +195,59 @@ h1 {
   width: 100%;
 }
 
+.carousel-row {
+  display: flex;
+  gap: 10px;
+}
+
+
+@media (max-width: 1024px) {
+  #logo {
+    width: 60%;
+  }
+}
+
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .carousel-row,
-  .paragraph-row {
+/* Mobile layout for screens 780px or narrower */
+@media (max-width: 780px) {
+  /* Make the main-content a flex container with column direction */
+  .main-content {
+    display: flex;
     flex-direction: column;
   }
   
+  /* Create clones of the elements for mobile layout */
+  .main-content::before {
+    content: "";
+    display: block;
+  }
+  
+  /* Make the carousel containers and paragraph containers visible at the root level */
+  .main-content .carousel-container.left {
+    display: block !important;
+    width: 100%;
+  }
+  
+  .main-content .paragraph-container.left {
+    display: block !important;
+    width: 100%;
+  }
+  
+  .main-content .carousel-container.right {
+    display: block !important;
+    width: 100%;
+  }
+  
+  .main-content .paragraph-container.right {
+    display: block !important;
+    width: 100%;
+  }
+  
+  /* Ensure each container takes full width */
   .carousel-container,
   .paragraph-container {
     width: 100%;
     margin-bottom: 20px;
-  }
-  
-  .paragraph-container.left,
-  .paragraph-container.right {
-    text-align: center;
-  }
-  
-  header {
-    font-size: 80px;
   }
 }
 
@@ -257,103 +257,16 @@ h1 {
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px #000;
 }
-
-.snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;pointer-events:none;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
-
-/* Default desktop layout */
-.carousel-row, .paragraph-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.carousel-container, .paragraph-container {
-  flex: 1;
-}
-
-@media (max-width: 1024px) {
-  #logo {
-    width: 60%;
-  }
-}
-
-@media (max-width: 1024px) {
-  #logo {
-    width: 60%;
-  }
-}
-
-@media (max-width: 780px) {
-  /* Change flex rows to columns */
-  .carousel-row, .paragraph-row {
-    display: block;
-    width: 100%;
-  }
   
   /* Ensure each container takes full width */
   .carousel-container, .paragraph-container {
     width: 100%;
   }
-  
-  /* Re-order elements using CSS Grid layout */
-  .carousel-row, .paragraph-row {
-    order: initial;
-  }
-  
-  /* Create a parent container for all items */
-  .main-content {
-    display: grid;
-    grid-template-areas:
-      "carousel1"
-      "paragraph1"
-      "carousel2"
-      "paragraph2";
-  }
-  
-  /* Assign grid areas to each element */
-  .carousel-container.left {
-    grid-area: carousel1;
-  }
-  
-  .carousel-container.right {
-    grid-area: carousel2;
-  }
-  
-  .paragraph-container.left {
-    grid-area: paragraph1;
-  }
-  
-  .paragraph-container.right {
-    grid-area: paragraph2;
-  }
-  
-  /* Hide the original row containers visually but keep them in the DOM */
-  .carousel-row, .paragraph-row {
-    display: contents;
-  }
-}
 
-@media (max-width: 768px) {
-  .carousel-row,
-  .paragraph-row {
-    flex-direction: column;
-  }
-  
-  .carousel-container,
-  .paragraph-container {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .paragraph-container.left,
-  .paragraph-container.right {
-    text-align: center;
-  }
   
   header {
     font-size: 80px;
   }
-}
 
 .snowflake {
   color: #fff;
@@ -363,14 +276,3 @@ h1 {
 }
 
 .snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;pointer-events:none;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
-
-/* Default desktop layout */
-.carousel-row, .paragraph-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.carousel-container, .paragraph-container {
-  flex: 1;
-}
