@@ -47,19 +47,21 @@ para1.className = 'center-text';
 para1.textContent = "Nestled in the scenic hills of Honeydew, California, Roy's Christmas Trees has grown premium Silvertip (Red Fir) trees since 1982. Founded and run by Roy Forcier, our small, family-run tree farm specializes in stump-cultured trees. We also plant tree seedlings ensuring a sustainable and naturally beautiful selection for your holiday celebrations.";
 mainContent.appendChild(para1);
 
+// ========== FIRST CAROUSEL (Left Side) ==========
+
 // Create carousels row
 const carouselRow = document.createElement('div');
 carouselRow.className = 'carousel-row';
 mainContent.appendChild(carouselRow);
 
-// ========== FIRST CAROUSEL (Left Side) ==========
+// Create first carousel container
+const carousel1Container = document.createElement('div');
+carousel1Container.className = 'carousel-container left';
 
 // Create first carousel
 const carousel1 = document.createElement('div');
 carousel1.className = 'carousel';
 
-
-// Create and add images to first carousel
 const imageData1 = [
   { src: 'RoyAtFarm.jpg', id: 'roy-farm'},
   { src: 'Tree.jpg', id: 'tree' },
@@ -97,49 +99,28 @@ nextBtn1.textContent = '>';
 controls1.appendChild(prevBtn1);
 controls1.appendChild(nextBtn1);
 
-// Create carousel indicators for first carousel
-const indicators1 = document.createElement('div');
-indicators1.className = 'carousel-indicators';
-
-const indicatorElements1 = [];
-
-for (let i = 0; i < imageData1.length; i++) {
-  const indicator = document.createElement('span');
-  indicator.className = i === 0 ? 'indicator active' : 'indicator';
-  indicator.dataset.index = i;
-  indicators1.appendChild(indicator);
-  indicatorElements1.push(indicator);
-}
-
-// Create first carousel container
-const carousel1Container = document.createElement('div');
-carousel1Container.className = 'carousel-container left';
-carouselRow.appendChild(carousel1Container);
-carousel1Container.appendChild(carousel1);
-
+// Create text content
+const leftText = document.createElement('div');
+leftText.className = 'carouselText';
 
 const para2 = document.createElement('p');
 para2.id = 'what-you-can-get';
 para2.textContent = "Each season, we bring our freshly harvested trees to 5795 Grizzly Bluff Road in Ferndale, California, in the heart of the Ferndale Bottoms. Alongside our trees, we offer handmade fresh Christmas wreaths, crafted with care by Elizabeth Forcier, bringing the fragrance and charm of the season to your home.";
 
+leftText.appendChild(para2);
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Assemble first carousel
+// Assemble components in the correct order
+carousel1Container.appendChild(carousel1);
 carousel1Container.appendChild(controls1);
-carousel1Container.appendChild(indicators1);
-carousel1Container.appendChild(para2);
+carousel1Container.appendChild(leftText);
 
+// Add carousel container to the parent element
+carouselRow.appendChild(carousel1Container);
+
+
+
+// ========== SECOND CAROUSEL (Right Side) ==========
+// Create second carousel container
 
 
 // ========== SECOND CAROUSEL (Right Side) ==========
@@ -168,7 +149,6 @@ imageData2.forEach(data => {
   const img = document.createElement('img');
   img.src = data.src;
   img.id = data.id;
-  img.alt = data.alt;
   
   slide.appendChild(img);
   carousel2.appendChild(slide);
@@ -190,126 +170,91 @@ nextBtn2.textContent = '>';
 controls2.appendChild(prevBtn2);
 controls2.appendChild(nextBtn2);
 
-// Create carousel indicators for second carousel
-const indicators2 = document.createElement('div');
-indicators2.className = 'carousel-indicators';
-
-const indicatorElements2 = [];
-
-for (let i = 0; i < imageData2.length; i++) {
-  const indicator = document.createElement('span');
-  indicator.className = i === 0 ? 'indicator active' : 'indicator';
-  indicator.dataset.index = i;
-  indicators2.appendChild(indicator);
-  indicatorElements2.push(indicator);
-}
+// Create text content for right carousel
+const rightText = document.createElement('div');
+rightText.className = 'carouselText';
 
 const para3 = document.createElement('p');
 para3.id = 'shop-info';
 para3.textContent = "While selecting your tree, step into our Ornament and Gift shop, housed in the vestibule of a beautifully converted Presbyterian church, where you'll find unique holiday treasures to complement your festivities.";
 
-// Assemble second carousel
+rightText.appendChild(para3);
+
+// Assemble components in the correct order
 carousel2Container.appendChild(carousel2);
 carousel2Container.appendChild(controls2);
-carousel2Container.appendChild(indicators2);
-carousel2Container.appendChild(para3);
+carousel2Container.appendChild(rightText);
 
+// Add second carousel container to the parent element
 carouselRow.appendChild(carousel2Container);
 
+// Second carousel functionality
+let currentIndex2 = 0;
 
+// ===================== para4 ================
 
-
-// Add paragraph 4 (centered at bottom)
 const para4 = document.createElement('p');
 para4.id = 'buy';
 para4.className = 'center-text';
 para4.textContent = "For a tree with history, heart, and Humboldt-grown tradition, visit Roy's Christmas Trees.";
 mainContent.appendChild(para4);
 
-// // ========== CAROUSEL FUNCTIONALITY ==========
+// ========== CAROUSEL FUNCTIONALITY ==========
 
-// // First carousel functionality
-// let currentIndex1 = 0;
+// First carousel functionality
+let currentIndex1 = 0;
 
-// function updateCarousel1() {
-//   carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
+function updateCarousel1() {
+  carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
+}
+
+nextBtn1.addEventListener('click', () => {
+  if (currentIndex1 < carousel1Images.length - 1) {
+    currentIndex1++;
+  } else {
+    currentIndex1 = 0;
+  }
+  updateCarousel1();
+});
+
+prevBtn1.addEventListener('click', () => {
+  if (currentIndex1 > 0) {
+    currentIndex1--;
+  } else {
+    currentIndex1 = carousel1Images.length - 1;
+  }
+  updateCarousel1();
+});
+
+function updateCarousel2() {
+  carousel2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
+}
+
+nextBtn2.addEventListener('click', () => {
+  if (currentIndex2 < carousel2Images.length - 1) {
+    currentIndex2++;
+  } else {
+    currentIndex2 = 0;
+  }
+  updateCarousel2();
+});
+
+prevBtn2.addEventListener('click', () => {
+  if (currentIndex2 > 0) {
+    currentIndex2--;
+  } else {
+    currentIndex2 = carousel2Images.length - 1;
+  }
+  updateCarousel2();
+});
+
+// Auto-advance both carousels with a slight delay
+setInterval(() => {
+  // Increment both indexes and wrap around when reaching the end
+  currentIndex1 = (currentIndex1 + 1) % carousel1Images.length;
+  currentIndex2 = (currentIndex2 + 1) % carousel2Images.length;
   
-//   indicatorElements1.forEach((indicator, index) => {
-//     if (index === currentIndex1) {
-//       indicator.classList.add('active');
-//     } else {
-//       indicator.classList.remove('active');
-//     }
-//   });
-// }
-
-// nextBtn1.addEventListener('click', () => {
-//   if (currentIndex1 < carousel1Images.length - 1) {
-//     currentIndex1++;
-//   } else {
-//     currentIndex1 = 0;
-//   }
-//   updateCarousel1();
-// });
-
-// prevBtn1.addEventListener('click', () => {
-//   if (currentIndex1 > 0) {
-//     currentIndex1--;
-//   } else {
-//     currentIndex1 = carousel1Images.length - 1;
-//   }
-//   updateCarousel1();
-// });
-
-// indicatorElements1.forEach(indicator => {
-//   indicator.addEventListener('click', () => {
-//     currentIndex1 = parseInt(indicator.dataset.index);
-//     updateCarousel1();
-//   });
-// });
-
-// // Second carousel functionality
-// let currentIndex2 = 0;
-
-// function updateCarousel2() {
-//   carousel2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
-  
-//   indicatorElements2.forEach((indicator, index) => {
-//     if (index === currentIndex2) {
-//       indicator.classList.add('active');
-//     } else {
-//       indicator.classList.remove('active');
-//     }
-//   });
-// }
-
-// nextBtn2.addEventListener('click', () => {
-//   if (currentIndex2 < carousel2Images.length - 1) {
-//     currentIndex2++;
-//   } else {
-//     currentIndex2 = 0;
-//   }
-//   updateCarousel2();
-// });
-
-// prevBtn2.addEventListener('click', () => {
-//   if (currentIndex2 > 0) {
-//     currentIndex2--;
-//   } else {
-//     currentIndex2 = carousel2Images.length - 1;
-//   }
-//   updateCarousel2();
-// });
-
-// indicatorElements2.forEach(indicator => {
-//   indicator.addEventListener('click', () => {
-//     currentIndex2 = parseInt(indicator.dataset.index);
-//     updateCarousel2();
-//   });
-// });
-
-// // Auto-advance both carousels every 5 seconds, slightly offset from first
-// setInterval(() => {
-//   currentIndex2 = (currentIndex2 + 1) % carousel2Images.length;
-//   updateCarousel2();
-// }, 5500);
+  // Update both carousels
+  updateCarousel1();
+  updateCarousel2();
+}, 5500);

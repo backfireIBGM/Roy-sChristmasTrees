@@ -22,7 +22,15 @@ header {
 h3 {
   text-align: center;
   font-size: 30px;
-  font-family: Libre Caslon Text;
+  font-family: 'Libre Caslon Text';
+}
+
+h2 {
+  color: white;
+  font-family: 'Libre Caslon Text';
+  font-size: 140px;
+  width: 100%;
+  padding-top: 1100px;
 }
 
 
@@ -31,21 +39,20 @@ body {
 }
 
 p {
-  font-size: 20px;
-  margin-left: 8px;
-  margin-right: 8px;
+  font-size: 80px;
   color: #f2e8cf;
   line-height: 1.6;
-  font-family: Libre Caslon Text;
+  font-family: 'Libre Caslon Text';
+  text-align: left;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 180px;
   margin-left: 8px;
   margin-right: 8px;
   color: #f2e8cf;
   line-height: 1.6;
-  font-family: Libre Caslon Text;
+  font-family: 'Libre Caslon Text';
 }
 
 #address-text {
@@ -64,7 +71,7 @@ h1 {
 }
 
 #logo {
-  width: 60%;
+  width: 80%;
   height: auto;
   margin: auto;
   display: block;
@@ -73,7 +80,6 @@ h1 {
 /* Main content wrapper */
 .main-content {
   width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -81,31 +87,15 @@ h1 {
 /* Centered text class */
 .center-text {
   text-align: center;
-  margin: 25px auto;
-  max-width: 800px;
-}
-
-/* Paragraph container */
-.paragraph-container {
-  width: 48%;
-}
-
-.paragraph-container.left {
-  text-align: left;
-}
-
-.paragraph-container.right {
-  text-align: right;
 }
 
 /* Carousel Containers */
 .carousel-container {
-  width: 48%;
-  height: 350px;
+  width: 100%;
   position: relative;
+  height: 1200px;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Carousel */
@@ -127,8 +117,8 @@ h1 {
 }
 
 .carousel img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80%;
+  max-height: 80%;
   object-fit: contain;
 }
 
@@ -182,17 +172,22 @@ h1 {
   text-align: left;
 }
 
+.carouselText {
+  width: 100%;
+  margin-top: 1600px;
+  display: block;
+}
+
 #what-you-can-get {
-  text-align: left;
+  float: left;
+  width: 49%;
+  height: fit-content;
 }
 
 #shop-info {
-  text-align: left;
-}
-
-#buy {
-  font-size: xxx-large;
-  width: 100%;
+  width: 49%;
+  float: right;
+  height: fit-content;
 }
 
 .carousel-row {
@@ -200,55 +195,38 @@ h1 {
   gap: 10px;
 }
 
-
 @media (max-width: 1024px) {
-  #logo {
-    width: 60%;
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 80px;
+    padding-top: 250px;
+  }
+
+  p {
+    font-size: 20px;
   }
 }
 
-/* Responsive adjustments */
-/* Mobile layout for screens 780px or narrower */
+@media (max-width: 920px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 50px;
+    padding-top: 390px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 780px) {
-  /* Make the main-content a flex container with column direction */
-  .main-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Create clones of the elements for mobile layout */
-  .main-content::before {
-    content: "";
-    display: block;
-  }
-  
-  /* Make the carousel containers and paragraph containers visible at the root level */
-  .main-content .carousel-container.left {
-    display: block !important;
-    width: 100%;
-  }
-  
-  .main-content .paragraph-container.left {
-    display: block !important;
-    width: 100%;
-  }
-  
-  .main-content .carousel-container.right {
-    display: block !important;
-    width: 100%;
-  }
-  
-  .main-content .paragraph-container.right {
-    display: block !important;
-    width: 100%;
-  }
-  
-  /* Ensure each container takes full width */
-  .carousel-container,
-  .paragraph-container {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+
 }
 
 .snowflake {
@@ -257,16 +235,6 @@ h1 {
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px #000;
 }
-  
-  /* Ensure each container takes full width */
-  .carousel-container, .paragraph-container {
-    width: 100%;
-  }
-
-  
-  header {
-    font-size: 80px;
-  }
 
 .snowflake {
   color: #fff;
