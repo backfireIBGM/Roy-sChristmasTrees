@@ -91,11 +91,11 @@ h1 {
 
 /* Carousel Containers */
 .carousel-container {
-  width: 100%;
+  width: 48%; /* Change from 100% to fit two side by side */
   position: relative;
-  height: 1200px;
-  overflow: hidden;
+  height: 600px; /* Reduce from 1200px */
   border-radius: 8px;
+  margin-bottom: 150px; /* Add space for text below */
 }
 
 /* Carousel */
@@ -174,25 +174,30 @@ h1 {
 
 .carouselText {
   width: 100%;
-  margin-top: 1600px;
-  display: block;
+  position: absolute;
+  left: 0;
 }
 
 #what-you-can-get {
   float: left;
-  width: 49%;
   height: fit-content;
 }
 
 #shop-info {
-  width: 49%;
   float: right;
   height: fit-content;
 }
 
+#buy {
+  padding-top: 900px;
+  font-size: 180px;
+}
+
 .carousel-row {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  justify-content: space-between;
+  position: relative;
 }
 
 @media (max-width: 1024px) {
