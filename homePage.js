@@ -193,7 +193,7 @@ let currentIndex2 = 0;
 
 // ===================== para4 ================
 
-const para4 = document.createElement('p');
+const para4 = document.createElement('h2');
 para4.id = 'buy';
 para4.className = 'center-text';
 para4.textContent = "For a tree with history, heart, and Humboldt-grown tradition, visit Roy's Christmas Trees.";

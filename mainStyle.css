@@ -19,21 +19,6 @@ header {
   font-family: lights;
 }
 
-h3 {
-  text-align: center;
-  font-size: 30px;
-  font-family: 'Libre Caslon Text';
-}
-
-h2 {
-  color: white;
-  font-family: 'Libre Caslon Text';
-  font-size: 140px;
-  width: 100%;
-  padding-top: 1100px;
-}
-
-
 body {
   background-color: #386641;
 }
@@ -54,6 +39,14 @@ h1 {
   line-height: 1.6;
   font-family: 'Libre Caslon Text';
 }
+
+h2 {
+  color: white;
+  font-family: 'Libre Caslon Text';
+  font-size: 200px;
+  width: 100%;
+}
+
 
 #address-text {
   text-align: center;
@@ -89,25 +82,26 @@ h1 {
   text-align: center;
 }
 
-/* Carousel Containers */
 .carousel-container {
-  width: 48%; /* Change from 100% to fit two side by side */
+  width: 48%; /* For side-by-side layout */
   position: relative;
-  height: 600px; /* Reduce from 1200px */
+  height: 2200px; /* Keep your preferred height */
   border-radius: 8px;
-  margin-bottom: 150px; /* Add space for text below */
+  margin-bottom: 150px;
+  overflow: hidden; /* This is critical to contain the slides */
 }
 
 /* Carousel */
 .carousel {
   display: flex;
-  height: 100%;
+  height: 1200px; /* Set a specific height */
   transition: transform 0.5s ease-in-out;
+  /* Don't set width to 300% - let the slides determine width */
 }
 
 .carousel-slide {
-  min-width: 100%;
-  height: 100%;
+  min-width: 100%; /* Each slide takes up 100% of visible container */
+  flex-shrink: 0; /* Prevent slides from shrinking */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,9 +121,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 50%;
+  top: 600px; /* Center in the carousel area */
   width: 100%;
-  transform: translateY(-50%);
   padding: 0 15px;
   box-sizing: border-box;
 }
@@ -186,11 +179,6 @@ h1 {
 #shop-info {
   float: right;
   height: fit-content;
-}
-
-#buy {
-  padding-top: 900px;
-  font-size: 180px;
 }
 
 .carousel-row {
