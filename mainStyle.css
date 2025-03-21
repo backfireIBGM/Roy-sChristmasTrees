@@ -24,7 +24,7 @@ body {
 }
 
 p {
-  font-size: 95px;
+  font-size: 35px;
   color: #f2e8cf;
   line-height: 1.6;
   font-family: 'Libre Caslon Text';
@@ -46,7 +46,6 @@ h2 {
   font-family: 'Libre Caslon Text';
   font-size: 200px;
   width: 100%;
-  margin-top: 300px;
   text-align: center;
 }
 
@@ -83,7 +82,7 @@ h2 {
 
 .carousel-container {
   position: relative;
-  height: 3165px; /* Keep your preferred height */
+  height: 3565px; /* Keep your preferred height */
   overflow: hidden; /* This is critical to contain the slides */
 }
 
@@ -137,6 +136,7 @@ h2 {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
+  font-size: 120px;
 }
 
 .carousel-btn:hover {
@@ -161,6 +161,7 @@ h2 {
 #what-you-can-get {
   float: left;
   height: fit-content;
+  margin-top: 8;
 }
 
 #shop-info {
@@ -175,7 +176,7 @@ h2 {
   position: relative;
 }
 
-@media (max-width: 1860px) {
+@media (max-width: 1870px) {
   h1 {
     font-size: 100px;
   }
@@ -185,45 +186,172 @@ h2 {
   }
 
   p {
-    font-size: 40px;
+    font-size: 35px;
+  }
+
+  #what-you-can-get {
+    font-size: 30px;
   }
 
   #logo {
     width: 70%;
   }
 
-  .carousel-container
-  {
-    height: 600px;
+  .carousel {
+    height: 500px;
+    width: 500px;
   }
 
   .carousel-row {
-    gap: 25px;
+    gap: 200px;
   }
   
   .carousel img {
-    max-width: 10%;
-    max-height: 10%;
+    max-height: 60%;
+    max-width: 60%;
+  }
+
+  .carousel-controls {
+    top: 225px;
+  }
+
+  .carousel-btn {
+    height: 50px;
+    width: 50px;
+    font-size: 60px;
+  }
+
+  .carousel-container
+  {
+    height: 1000px;
   }
 }
 
-@media (max-width: 920px) {
-  h1 {
-    font-size: 50px;
+@media (max-width: 1350px) {
+
+  .carousel {
+    height: 400px;
+    width: 400px;
   }
 
-  h2 {
-    font-size: 50px;
-    padding-top: 390px;
+  .carousel img {
+    max-height: 60%;
+    max-width: 60%;
   }
 
   p {
-    font-size: 20px;
+    font-size: 30px;
+  }
+
+  .carousel-container
+  {
+    height: 1000px;
+  }
+
+  .carousel-controls
+  {
+    top: 175px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1282px) {
+  /* .carousel-container
+  {
+    height: 1050px;
+  } */
 
+  #what-you-can-get {
+    font-size: 29.9px;
+  }
+}
+
+@media (max-width: 1277px) {
+
+  #what-you-can-get {
+    font-size: 30px;
+  }
+
+  .carousel-container
+  {
+    height: 1100px;
+  }
+}
+
+@media (max-width: 1091px) {
+  .carousel-controls
+  {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .carousel-btn {
+    height: 35px;
+    width: 35px;
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* .carousel-row {
+    gap: 0px;
+  } */
+
+  /* .carousel {
+    height: 400px;
+    width: 00px;
+  } */
+
+  /* .carousel img {
+    max-height: 60%;
+    max-width: 60%;
+  }
+
+  .carousel-container
+  {
+    width: 1000px;
+  } */
+}
+
+@media (max-width: 1024px) {
+  .carousel-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; /* Add some vertical spacing between carousels */
+  }
+
+  .carousel-container {
+    width: 100%; /* Make each carousel container take full width */
+    max-width: 500px; /* Optional: Set a maximum width for better appearance */
+    margin-bottom: 30px; /* Add bottom margin for spacing */
+  }
+
+  .carousel {
+    height: 400px;
+    width: 100%; /* Make carousel take full width of its container */
+  }
+
+  .carousel img {
+    max-height: 60%;
+    max-width: 60%;
+  }
+
+  /* Adjust the text positioning for better vertical layout */
+  .carouselText {
+    position: relative;
+  }
+
+  #what-you-can-get, #shop-info {
+    float: none; /* Remove float */
+    width: 100%;
+    font-size: 35px;
+  }
+
+  .carousel-container
+  {
+    height: 1300px;
+  }
 }
 
 .snowflake {
