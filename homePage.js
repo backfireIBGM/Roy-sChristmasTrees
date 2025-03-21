@@ -91,10 +91,16 @@ controls1.className = 'carousel-controls';
 const prevBtn1 = document.createElement('button');
 prevBtn1.className = 'carousel-btn prev-btn';
 prevBtn1.textContent = '<';
+prevBtn1.style.fontSize = '90px';
+prevBtn1.style.color = '#808080';
+
 
 const nextBtn1 = document.createElement('button');
 nextBtn1.className = 'carousel-btn next-btn';
 nextBtn1.textContent = '>';
+nextBtn1.style.fontSize = '90px';
+nextBtn1.style.color = '#808080';
+
 
 controls1.appendChild(prevBtn1);
 controls1.appendChild(nextBtn1);
@@ -162,10 +168,14 @@ controls2.className = 'carousel-controls';
 const prevBtn2 = document.createElement('button');
 prevBtn2.className = 'carousel-btn prev-btn';
 prevBtn2.textContent = '<';
+prevBtn2.style.fontSize = '90px';
+prevBtn2.style.color = '#808080';
 
 const nextBtn2 = document.createElement('button');
 nextBtn2.className = 'carousel-btn next-btn';
 nextBtn2.textContent = '>';
+nextBtn2.style.fontSize = '90px';
+nextBtn2.style.color = '#808080';
 
 controls2.appendChild(prevBtn2);
 controls2.appendChild(nextBtn2);
