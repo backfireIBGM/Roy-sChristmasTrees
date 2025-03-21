@@ -83,18 +83,16 @@ h2 {
 }
 
 .carousel-container {
-  width: 48%; /* For side-by-side layout */
+  width: 40%; /* For side-by-side layout */
   position: relative;
-  height: 2200px; /* Keep your preferred height */
-  border-radius: 8px;
-  margin-bottom: 150px;
+  height: 3000px; /* Keep your preferred height */
   overflow: hidden; /* This is critical to contain the slides */
 }
 
 /* Carousel */
 .carousel {
   display: flex;
-  height: 1200px; /* Set a specific height */
+  height: 2200px; /* Set a specific height */
   transition: transform 0.5s ease-in-out;
   /* Don't set width to 300% - let the slides determine width */
 }
@@ -111,8 +109,8 @@ h2 {
 }
 
 .carousel img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 70%;
+  max-height: 70%;
   object-fit: contain;
 }
 
@@ -183,19 +181,18 @@ h2 {
 
 .carousel-row {
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  gap: 700px;
+  justify-content: center;
   position: relative;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: px) {
   h1 {
-    font-size: 50px;
+    font-size: 10px;
   }
 
   h2 {
     font-size: 80px;
-    padding-top: 250px;
   }
 
   p {
