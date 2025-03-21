@@ -24,7 +24,7 @@ body {
 }
 
 p {
-  font-size: 80px;
+  font-size: 95px;
   color: #f2e8cf;
   line-height: 1.6;
   font-family: 'Libre Caslon Text';
@@ -77,15 +77,13 @@ h2 {
 .main-content {
   width: 90%;
   margin: 0 auto;
-  padding: 20px;
 }
 
 /* Centered text class */
 
 .carousel-container {
-  width: 40%; /* For side-by-side layout */
   position: relative;
-  height: 3000px; /* Keep your preferred height */
+  height: 3165px; /* Keep your preferred height */
   overflow: hidden; /* This is critical to contain the slides */
 }
 
@@ -94,7 +92,6 @@ h2 {
   display: flex;
   height: 2200px; /* Set a specific height */
   transition: transform 0.5s ease-in-out;
-  /* Don't set width to 300% - let the slides determine width */
 }
 
 .carousel-slide {
@@ -146,16 +143,6 @@ h2 {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
 .indicator.active {
   background: white;
 }
@@ -188,9 +175,9 @@ h2 {
   position: relative;
 }
 
-@media (max-width: px) {
+@media (max-width: 1860px) {
   h1 {
-    font-size: 10px;
+    font-size: 100px;
   }
 
   h2 {
@@ -198,7 +185,17 @@ h2 {
   }
 
   p {
-    font-size: 20px;
+    font-size: 40px;
+  }
+
+  #logo {
+    width: 70%;
+  }
+
+  .carousel-container
+  {
+    height: 1000px;
+    width: 100%;
   }
 }
 
