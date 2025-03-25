@@ -32,7 +32,7 @@ PhoneNumHeading.textContent = '';
 document.body.appendChild(PhoneNumHeading);
 const PhoneNumText = document.createElement('h1');
 PhoneNumText.id = 'address-text';
-PhoneNumText.textContent = '(707) 834-3478';
+PhoneNumText.textContent = '(707) 834-6495';
 document.body.appendChild(PhoneNumText);
 
 // Create main content wrapper
