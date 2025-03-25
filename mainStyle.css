@@ -32,7 +32,7 @@ p {
 }
 
 h1 {
-  font-size: 180px;
+  font-size: 100px;
   margin-left: 8px;
   margin-right: 8px;
   color: #f2e8cf;
@@ -44,7 +44,7 @@ h1 {
 h2 {
   color: white;
   font-family: 'Libre Caslon Text';
-  font-size: 200px;
+  font-size: 100px;
   width: 100%;
   text-align: center;
 }
@@ -82,14 +82,14 @@ h2 {
 
 .carousel-container {
   position: relative;
-  height: 3565px; /* Keep your preferred height */
+  height: 1000px; /* Keep your preferred height */
   overflow: hidden; /* This is critical to contain the slides */
 }
 
 /* Carousel */
 .carousel {
   display: flex;
-  height: 2200px; /* Set a specific height */
+  height: 500px; /* Set a specific height */
   transition: transform 0.5s ease-in-out;
 }
 
@@ -115,7 +115,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 950px; /* Center in the carousel area */
+  top: 225px; /* Center in the carousel area */
   width: 100%;
   padding: 0 15px;
   box-sizing: border-box;
@@ -127,8 +127,8 @@ h2 {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  width: 250px;
-  height: 250px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   font-size: 18px;
   cursor: pointer;
@@ -136,7 +136,7 @@ h2 {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
-  font-size: 120px;
+  font-size: 40px;
 }
 
 .carousel-btn:hover {
@@ -171,7 +171,7 @@ h2 {
 
 .carousel-row {
   display: flex;
-  gap: 700px;
+  gap: 100px;
   justify-content: center;
   position: relative;
 }
@@ -348,9 +348,13 @@ h2 {
     font-size: 35px;
   }
 
-  .carousel-container
+  .left
   {
-    height: 1300px;
+    height: 1100px;
+  }
+  .right
+  {
+    height: 900px;
   }
 }
 
