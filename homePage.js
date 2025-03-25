@@ -1,4 +1,4 @@
-document.body.appendChild(Object.assign(document.createElement('img'), {id: 'logo', src: 'Logo.png'}));
+document.body.appendChild(Object.assign(document.createElement('img'), {id: 'logo', src: 'logo.png'}));
 
 
 // Create header
