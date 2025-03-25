@@ -18,7 +18,7 @@ addressText.id = 'address-text';
 // Create the anchor element
 const mapLink = document.createElement('a');
 mapLink.href = 'https://www.google.com/maps/search/?api=1&query=5795+Grizzly+Bluff+Road+Ferndale+California';
-mapLink.textContent = '5795 Grizzly Bluff Road in Ferndale, California';
+mapLink.textContent = '5795 Grizzly Bluff Road Ferndale California';
 mapLink.target = '_blank'; // Opens in a new tab
 
 // Append the link to the heading
