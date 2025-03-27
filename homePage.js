@@ -268,3 +268,18 @@ setInterval(() => {
   updateCarousel1();
   updateCarousel2();
 }, 5500);
+
+const addressImage = document.createElement('img');
+addressImage.src = 'Address.png';
+addressImage.id = 'address-image';
+
+// Create another anchor element for the image
+const imageLink = document.createElement('a');
+imageLink.href = 'https://www.google.com/maps/search/?api=1&query=5795+Grizzly+Bluff+Road+Ferndale+California';
+imageLink.target = '_blank'; // Opens in a new tab
+
+// Append the image to the image link
+imageLink.appendChild(addressImage);
+
+// Append the image link to the body
+document.body.appendChild(imageLink);
