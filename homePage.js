@@ -186,7 +186,7 @@ rightText.className = 'carouselText';
 
 const para3 = document.createElement('p');
 para3.id = 'shop-info';
-para3.textContent = "While selecting your tree, step into our Ornament and Gift shop, housed in the vestibule of a beautifully converted Presbyterian church, where you'll find unique holiday treasures to complement your festivities.";
+para3.textContent = "While selecting your tree, step into our Ornament and Wreath shop, housed in the vestibule of a beautifully converted Presbyterian church, where you'll find unique holiday treasures to complement your festivities.";
 
 rightText.appendChild(para3);
 
