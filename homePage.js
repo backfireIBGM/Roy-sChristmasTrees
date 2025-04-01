@@ -215,7 +215,8 @@ mainContent.appendChild(para4);
 let currentIndex1 = 0;
 
 function updateCarousel1() {
-  carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
+  carousel1.style.marginLeft = `${currentIndex1 * -100}%`;
+
 }
 
 nextBtn1.addEventListener('click', () => {

@@ -90,7 +90,7 @@ h2 {
 .carousel {
   display: flex;
   height: 500px; /* Set a specific height */
-  /* transition: transform 0.5s ease-in-out; */
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide {
