@@ -184,19 +184,19 @@ h2 {
     }
 }
 
-@media (max-width: 1457px) {
+@media (max-width: 1490px) {
     p {
       font-size: 2rem;
     }
 }
 
-@media (max-width: 1214px) {
+@media (max-width: 1260px) {
   p {
     font-size: 1.5rem;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1124px) {
   .carousel-row {
     flex-direction: column;
     align-items: center;
@@ -218,7 +218,7 @@ h2 {
   }
 }
 
-@media (max-width: 877px) {
+@media (max-width: 900px) {
   p {
     font-size: 1.5rem;
     }
