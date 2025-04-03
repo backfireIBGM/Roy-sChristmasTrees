@@ -88,7 +88,6 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: #393c28;
-  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -166,30 +165,17 @@ h2 {
   width: 70%;
   height: auto;
 }
-
-  .carousel-row {
-    gap: 200px;
-  }
   
-  .carousel img {
-    max-height: 60%;
-    max-width: 60%;
-  }
+.carousel img {
+  max-height: 60%;
+  max-width: 60%;
+}
 
-  .carousel-controls {
-    top: 225px;
-  }
-
-  .carousel-btn {
-    height: 50px;
-    width: 50px;
-    font-size: 60px;
-  }
-
-  .carousel-container
-  {
-    height: 1000px;
-  }
+.carousel-btn {
+  height: 3rem;
+  width: 3rem;
+  font-size: 3rem;
+}
 
 @media (max-width: 1776px) {
     .carousel-container
@@ -209,68 +195,6 @@ h2 {
     font-size: 1.5rem;
   }
 }
-
-
-
-  /* .carousel-controls
-  {
-    top: 175px;
-    padding-left: 10px;
-    padding-right: 10px;
-  } */
-
-    /* .carousel {
-    height: 400px;
-    width: 400px;
-  }
-
-  .carousel img {
-    max-height: 60%;
-    max-width: 60%;
-  } */
-/* 
-  p {
-    font-size: 30px;
-  } */
-
-
-/*  @media (max-width: 1282px) {
-  /* .carousel-container
-  {
-    height: 1050px;
-  } */
-
- /* #what-you-can-get {
-    font-size: 29.9px;
-  }
-}
-
-@media (max-width: 1277px) {
-
-  #what-you-can-get {
-    font-size: 30px;
-  }
-
-  .carousel-container
-  {
-    height: 1100px;
-  }
-}
-
-@media (max-width: 1091px) {
-  .carousel-controls
-  {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  .carousel-btn {
-    height: 35px;
-    width: 35px;
-    font-size: 40px;
-  }
-}
-  */
 
 @media (max-width: 1024px) {
   .carousel-row {
@@ -295,15 +219,6 @@ h2 {
 }
 
 @media (max-width: 877px) {
-  /* .carousel-row {
-    flex-direction: column;
-    align-items: center;
- }
-
-  .carousel-container {
-  max-width: 50rem;
-  } */
-
   p {
     font-size: 1.5rem;
     }
@@ -312,14 +227,6 @@ h2 {
     text-align: left;
     font-size: 4rem;
   }
-
-  /* .left {
-    height: 48rem;
-  } */
-
-  /* .right {
-    height: 50rem;
-  } */
 }
 
 @media (max-width: 663px) {
@@ -331,59 +238,6 @@ h2 {
     font-size: 3rem;
   }
 }
-
-/*
-@media (max-width: 1000px) {
-  h1 {
-    font-size: 50px;
-  }
-
-  h2 {
-    font-size: 50px;
-    text-align: left;
-  }
-}
-
-@media (max-width: 570px) {
-  p {
-    font-size: 20px;
-  }
-
-  #what-you-can-get {
-    font-size: 20px;
-  }
-
-  #shop-info {
-    font-size: 20px;
-  }
-
-  .left
-  {
-    height: 660px;
-  }
-
-  .right {
-    height: 580px;
-  }
-}
-
-@media (max-width: 570px) {
-  p {
-    font-size: 15px;
-  }
-
-  #what-you-can-get {
-    font-size: 15px;
-  }
-
-  #shop-info {
-    font-size: 15px;
-  }
-
-  h2 {
-    font-size: 30px;
-  }
-}*/ */
 
 
 .snowflake {
