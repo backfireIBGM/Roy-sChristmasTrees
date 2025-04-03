@@ -9,31 +9,19 @@
   src: url('./LibreCaslonText-Regular.ttf');
 }
 
-
-/* General page styling */
-header {
-  font-size: 150px;
-  text-align: center;
-  color: #bc4749;
-  text-emphasis: bold;
-  font-family: lights;
-}
-
 body {
   background-color: #386641;
 }
 
 p {
-  font-size: 35px;
+  font-size: 2.5rem;
   color: #f2e8cf;
-  line-height: 1.6;
+  line-height: 3rem;
   text-align: left;
 }
 
 h1 {
-  font-size: 80px;
-  margin-left: 8px;
-  margin-right: 8px;
+  font-size: 3rem;
   color: #f2e8cf;
   line-height: 1.6;
   text-align: center;
@@ -41,7 +29,7 @@ h1 {
 
 h2 {
   color: white;
-  font-size: 100px;
+  font-size: 5rem;
   width: 100%;
   text-align: center;
 }
@@ -82,14 +70,14 @@ h2 {
 
 .carousel-container {
   position: relative;
-  height: 1000px; /* Keep your preferred height */
-  overflow: hidden; /* This is critical to contain the slides */
+  height: 75rem;
+  overflow: hidden;
 }
 
 /* Carousel */
 .carousel {
   display: flex;
-  height: 500px; /* Set a specific height */
+  height: 30rem;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -115,28 +103,26 @@ h2 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 225px; /* Center in the carousel area */
+  top: 14rem; /* Center in the carousel area */
   width: 100%;
-  padding: 0 15px;
   box-sizing: border-box;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .carousel-btn {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
-  font-size: 40px;
+  font-size: 2.3rem;
 }
 
 .carousel-btn:hover {
@@ -156,22 +142,21 @@ h2 {
   width: 100%;
   position: absolute;
   left: 0;
+  height: fit-content;
 }
 
 #what-you-can-get {
   float: left;
-  height: fit-content;
-  margin-top: 8;
+  
 }
 
 #shop-info {
   float: right;
-  height: fit-content;
 }
 
 .carousel-row {
   display: flex;
-  gap: 100px;
+  gap: 14rem;
   justify-content: center;
   position: relative;
 }
@@ -181,32 +166,6 @@ h2 {
   width: 70%;
   height: auto;
 }
-
-@media (max-width: 1870px) {
-  h1 {
-    font-size: 100px;
-  }
-
-  h2 {
-    font-size: 80px;
-  }
-
-  p {
-    font-size: 35px;
-  }
-
-  #what-you-can-get {
-    font-size: 30px;
-  }
-
-  #logo {
-    width: 70%;
-  }
-
-  .carousel {
-    height: 500px;
-    width: 500px;
-  }
 
   .carousel-row {
     gap: 200px;
@@ -231,11 +190,36 @@ h2 {
   {
     height: 1000px;
   }
+
+@media (max-width: 1776px) {
+    .carousel-container
+    {
+      height: 70rem;
+    }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1457px) {
+    p {
+      font-size: 2rem;
+    }
+}
 
-  .carousel {
+@media (max-width: 1214px) {
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+  /* .carousel-controls
+  {
+    top: 175px;
+    padding-left: 10px;
+    padding-right: 10px;
+  } */
+
+    /* .carousel {
     height: 400px;
     width: 400px;
   }
@@ -243,32 +227,20 @@ h2 {
   .carousel img {
     max-height: 60%;
     max-width: 60%;
-  }
-
+  } */
+/* 
   p {
     font-size: 30px;
-  }
+  } */
 
-  .carousel-container
-  {
-    height: 1000px;
-  }
 
-  .carousel-controls
-  {
-    top: 175px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media (max-width: 1282px) {
+/*  @media (max-width: 1282px) {
   /* .carousel-container
   {
     height: 1050px;
   } */
 
-  #what-you-can-get {
+ /* #what-you-can-get {
     font-size: 29.9px;
   }
 }
@@ -298,78 +270,69 @@ h2 {
     font-size: 40px;
   }
 }
-
-@media (max-width: 1024px) {
-  /* .carousel-row {
-    gap: 0px;
-  } */
-
-  /* .carousel {
-    height: 400px;
-    width: 00px;
-  } */
-
-  /* .carousel img {
-    max-height: 60%;
-    max-width: 60%;
-  }
-
-  .carousel-container
-  {
-    width: 1000px;
-  } */
-}
+  */
 
 @media (max-width: 1024px) {
   .carousel-row {
     flex-direction: column;
     align-items: center;
-    gap: 50px; /* Add some vertical spacing between carousels */
-  }
+ }
 
   .carousel-container {
-    width: 100%; /* Make each carousel container take full width */
-    max-width: 500px; /* Optional: Set a maximum width for better appearance */
-    margin-bottom: 30px; /* Add bottom margin for spacing */
+  max-width: 50rem;
   }
 
-  .carousel {
-    height: 400px;
-    width: 100%; /* Make carousel take full width of its container */
-  }
+  p {
+    font-size: 2rem;
+    }
 
-  .carousel img {
-    max-height: 60%;
-    max-width: 60%;
+  .left {
+    height: 50rem;
   }
-
-  /* Adjust the text positioning for better vertical layout */
-  .carouselText {
-    position: relative;
-  }
-
-  #what-you-can-get, #shop-info {
-    float: none; /* Remove float */
-    width: 100%;
-    font-size: 35px;
-  }
-
-  .left
-  {
-    height: 1100px;
-  }
-  .right
-  {
-    height: 900px;
+  .right {
+    height: 50rem;
   }
 }
 
-@media (max-width: 1110px) {
-  h1 {
-    font-size: 70px;
+@media (max-width: 877px) {
+  /* .carousel-row {
+    flex-direction: column;
+    align-items: center;
+ }
+
+  .carousel-container {
+  max-width: 50rem;
+  } */
+
+  p {
+    font-size: 1.5rem;
+    }
+
+  h2 {
+    text-align: left;
+    font-size: 4rem;
+  }
+
+  /* .left {
+    height: 48rem;
+  } */
+
+  /* .right {
+    height: 50rem;
+  } */
+}
+
+@media (max-width: 663px) {
+  .left {
+    height: 65rem;
+  }
+
+  h2 {
+    font-size: 3rem;
   }
 }
 
+/*
 @media (max-width: 1000px) {
   h1 {
     font-size: 50px;
@@ -420,7 +383,7 @@ h2 {
   h2 {
     font-size: 30px;
   }
-}
+}*/ */
 
 
 .snowflake {
