@@ -12,6 +12,7 @@ addressHeading.textContent = '';
 document.body.appendChild(addressHeading);
   
 // Create the heading element
+
 const addressText = document.createElement('h1');
 addressText.id = 'address-text';
 
@@ -26,6 +27,16 @@ addressText.appendChild(mapLink);
 
 // Append the heading to the body
 document.body.appendChild(addressText);
+
+const hoursText = document.createElement('h1');
+hoursText.id = 'address-text';
+
+const timeElement = document.createElement('time');
+timeElement.dateTime = '2025-11-29T08:00:00'; // Machine-readable format for the opening date and time
+timeElement.textContent = 'Open the day after Thanksgiving, daily 8am - 5pm';
+
+hoursText.appendChild(timeElement);
+document.body.appendChild(hoursText);
 
 const PhoneNumHeading = document.createElement('h3');
 PhoneNumHeading.textContent = '';
@@ -65,7 +76,10 @@ carousel1.className = 'carousel';
 const imageData1 = [
   { src: 'RoyAtFarm.jpg', id: 'roy-farm'},
   { src: 'Tree.jpg', id: 'tree' },
-  { src: 'RoyWithBigTree.jpg', id: 'BigTree' }
+  { src: 'RoyWithBigTree.jpg', id: 'BigTree' },
+  { src: 'BigTree.jpg'},
+  { src: 'TreeTrees.jpg'},
+  { src: 'WideTree.jpg'}
 ];
 
 const carousel1Images = [];
