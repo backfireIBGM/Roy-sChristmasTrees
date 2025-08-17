@@ -40,7 +40,6 @@ h2 {
   font-family: 'Libre Caslon Text';
 }
 
-
 #address-text {
   text-align: center;
 }
@@ -75,9 +74,9 @@ h2 {
 
 .carousel-container {
   position: relative;
-  height: 75rem; /* Original height for large screens */
-  overflow: hidden; /* This is crucial for containing the carousel */
-  /* Remove display: block if it was added, revert to what it was. */
+  height: auto;
+  min-height: 75rem;
+  overflow: hidden;
 }
 
 /* Carousel */
@@ -86,7 +85,7 @@ h2 {
   height: 30rem;
   transition: transform 0.5s ease-in-out;
   width: 100%;
-  /* Removed background-color from here - it goes on carousel-slide now */
+  background-color: transparent; /* Ensure no background on the carousel div */
 }
 
 .carousel-slide {
@@ -97,17 +96,23 @@ h2 {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /* !!! THE FIX FOR THE BORDER/BACKGROUND STARTS HERE !!! */
-  background-color: #393c28; /* This is your dark background "border" */
-  padding: 20px; /* Adjust this padding to control the thickness of the background border */
-  /* Ensure image inside is slightly smaller to show this padding as a border */
-  /* This relies on your img having max-width/height < 100% of its slide container */
+  background-color: transparent; /* Ensure no background on the slide div */
+  padding: 0; /* Remove padding from the slide itself */
 }
 
+/* Reverted .carousel img styles */
 .carousel img {
-  max-width: 70%; /* Keep images smaller than slide to show background */
-  max-height: 70%; /* Keep images smaller than slide to show background */
+  max-width: 70%; /* Revert to original size constraint */
+  max-height: 70%; /* Revert to original size constraint */
   object-fit: contain;
+  width: auto; /* Let it scale based on max-width/height */
+  height: auto; /* Let it scale based on max-width/height */
+  display: block; /* Ensures it's a block element */
+  margin: auto; /* Centers the image if it's smaller than its container */
+
+  /* *** NEW: ADD BORDER TO THE IMAGE *** */
+  border: 20px solid #393c28; /* Your dark border color and thickness */
+  box-sizing: border-box; /* Include border in the element's total size */
 }
 
 /* Carousel Controls (Next/Prev buttons) */
@@ -151,55 +156,50 @@ h2 {
 }
 
 .carouselText {
-  width: 100%;
-  position: absolute; /* Reverting to absolute for desktop positioning */
-  left: 0;
+  width: 95%;
+  margin-top: 2rem;
   height: fit-content;
-  padding: 0 1rem;
+  padding: 0 2.5%;
   box-sizing: border-box;
-  background-color: transparent; /* Text areas should not have a background */
-  top: 32rem; /* Position it below the carousel image for desktop */
+  background-color: transparent;
+  display: block;
 }
 
 #what-you-can-get {
-  float: left; /* Reinstating float for desktop */
-  width: 48%; /* Reinstating width */
-  padding: 0 1rem 0 0; /* Original padding */
+  width: 100%;
+  padding-right: 0;
   box-sizing: border-box;
 }
 
 #shop-info {
-  float: right; /* Reinstating float for desktop */
-  width: 48%; /* Reinstating width */
-  padding: 0 0 0 1rem; /* Original padding */
+  width: 100%;
+  padding-left: 0;
   box-sizing: border-box;
 }
 
-/* Add float clearing for desktop */
 .carouselText::after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
 
-
 .carousel-row {
   display: flex;
-  gap: 14rem;
+  gap: 14rem; /* Main desktop gap */
   justify-content: center;
   position: relative;
-  flex-wrap: nowrap; /* Prevent wrapping on large screens */
-  align-items: flex-start; /* Align contents to the top */
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
 
-/* Removing any special flexbox declarations on carousel-container.left/right */
-/* They should revert to general .carousel-container styles for desktop */
 .carousel-container.left,
 .carousel-container.right {
-  display: block; /* Ensures they behave as blocks for float containment */
-  height: 75rem; /* Revert to default height for these containers */
-  padding: 0; /* Resetting padding to ensure it's not interfering with child elements */
-  background-color: transparent; /* No background on these specific containers */
+  display: block;
+  height: auto;
+  min-height: 75rem;
+  padding: 0;
+  background-color: transparent;
+  margin-bottom: 2rem;
 }
 
 #address-image-link {
@@ -225,7 +225,8 @@ h2 {
 
 @media (max-width: 1776px) {
   .carousel-container {
-    height: 70rem;
+    min-height: 70rem;
+    height: auto;
   }
 }
 
@@ -241,97 +242,86 @@ h2 {
   }
 
   .carousel img {
-    max-height: 60%;
-    max-width: 60%;
+    max-width: calc(70% - 40px);
+    max-height: calc(70% - 40px);
   }
 
   .carousel-row {
-    gap: 5rem; /* Reduce gap as screen gets smaller */
+    gap: 5rem; /* Reduce gap for this breakpoint */
   }
 
-  /* Adjust width for floated text as screen shrinks */
-  #what-you-can-get,
-  #shop-info {
-    width: 47%; /* Give a bit more width to text on mid-screens */
+  .carouselText {
+    width: 95%;
+    padding: 0 2.5%;
+    margin-top: 1rem;
   }
 }
-
 
 /* Mobile breakpoint starts here */
 @media (max-width: 1124px) {
   .carousel-row {
-    flex-direction: column; /* Stack carousels vertically */
+    flex-direction: column;
     align-items: center;
-    gap: 3rem; /* Add some space between stacked carousels */
+    gap: 3rem;
   }
 
-  /* Mobile specific layout for individual carousel containers */
   .carousel-container.left,
   .carousel-container.right {
-    display: flex; /* Flex for mobile stacking */
-    flex-direction: column; /* Stack image and text vertically */
-    padding: 0; /* Reset padding for mobile, use inner element padding */
-    margin-bottom: 3rem; /* Add space between containers */
-    height: auto; /* Allow height to adjust on mobile */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 3rem;
+    height: auto;
+    min-height: initial;
+    overflow: visible;
   }
 
   .carousel-container {
-    /* General carousel-container properties for mobile */
     max-width: 90%;
-    height: auto; /* Ensure this is auto for mobile */
-    overflow: hidden; /* Keep overflow hidden for mobile carousel */
-    /* If you want a "border" on mobile too, apply it here */
-    background-color: transparent; /* Reset to transparent for mobile too */
-    padding: 0; /* Reset padding to avoid double-up */
+    height: auto;
+    min-height: initial;
+    overflow: visible;
   }
 
   .carousel {
-    width: 100%; /* Carousel image takes full width of container */
-    height: 30rem; /* Keep height for the image area */
-    /* For mobile, if you want a border, carousel-slide will handle it */
+    width: 100%;
+    height: 25rem;
+    background-color: transparent;
   }
 
-  .carousel-slide {
-    /* This will apply the border-like background for mobile too */
-    background-color: #393c28; /* Your dark background "border" */
-    padding: 10px; /* Mobile border thickness */
-    box-sizing: border-box;
+  /* Mobile adjustments for image */
+  .carousel img {
+    max-width: calc(90% - 20px);
+    max-height: calc(90% - 20px);
+    border: 10px solid #393c28; /* Smaller border for mobile */
   }
 
-
-  .carousel-container .carouselText { /* Target carouselText inside carousel-container for mobile */
-    position: static; /* Force text into normal document flow */
-    width: 90%; /* Text takes most of the container width */
-    padding: 1rem; /* Padding for text content */
-    margin-top: 2rem; /* Space between carousel image and text */
-    text-align: left; /* Keep left aligned for mobile readability */
-    background-color: transparent; /* No background on text wrapper */
+  .carousel-container .carouselText {
+    position: static;
+    width: 95%;
+    padding: 1rem 2.5%;
+    margin-top: 2rem;
+    text-align: left;
+    background-color: transparent;
   }
 
-  /* Ensure paragraphs inside carouselText also align left and have default styling */
   .carouselText p {
     text-align: left;
     background-color: transparent;
-    padding: 0; /* Reset padding */
-    margin: 0; /* Reset margin */
+    padding: 0;
+    margin: 0;
   }
 
-  /* Remove floats and set full width for mobile */
   #what-you-can-get,
   #shop-info {
     float: none;
     width: 100%;
-    margin: 0 auto; /* Center with auto margins if needed */
-    padding: 0; /* Reset padding for mobile, handled by carouselText */
-  }
-
-  .carousel img {
-    max-height: 80%;
-    max-width: 80%;
+    margin: 0 auto;
+    padding: 0;
   }
 
   p {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .left,
@@ -340,10 +330,17 @@ h2 {
   }
 
   #buy {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.3;
     padding: 0 1rem;
     box-sizing: border-box;
+  }
+}
+
+/* NEW: Tweak gap for narrower screens, specifically to handle the second carousel better */
+@media (max-width: 1000px) {
+  .carousel-row {
+    gap: 2rem; /* Even smaller gap to prevent images from squeezing */
   }
 }
 
@@ -384,16 +381,15 @@ h2 {
   #buy {
     font-size: 1.8rem;
     line-height: 1.2;
-    padding: 0 0.5rem; /* Ensure padding on smallest screens */
+    padding: 0 0.5rem;
   }
 
   .carouselText p {
     font-size: 1.2rem;
     line-height: 1.5;
-    padding: 0; /* Reset, padding handled by carouselText container */
+    padding: 0;
   }
 }
-
 
 .snowflake {
   color: #fff;
@@ -402,4 +398,118 @@ h2 {
   text-shadow: 0 0 5px #000;
 }
 
-.snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;pointer-events:none;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
+.snowflake,
+.snowflake .inner {
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+@keyframes snowflakes-fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+@keyframes snowflakes-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+}
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  pointer-events: none;
+  animation-name: snowflakes-shake;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+}
+.snowflake .inner {
+  animation-duration: 10s;
+  animation-name: snowflakes-fall;
+  animation-timing-function: linear;
+}
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(0) .inner {
+  animation-delay: 0s;
+}
+.snowflake:first-of-type {
+  left: 10%;
+  animation-delay: 1s;
+}
+.snowflake:first-of-type .inner,
+.snowflake:nth-of-type(8) .inner {
+  animation-delay: 1s;
+}
+.snowflake:nth-of-type(2) {
+  left: 20%;
+  animation-delay: 0.5s;
+}
+.snowflake:nth-of-type(2) .inner,
+.snowflake:nth-of-type(6) .inner {
+  animation-delay: 6s;
+}
+.snowflake:nth-of-type(3) {
+  left: 30%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(11) .inner,
+.snowflake:nth-of-type(3) .inner {
+  animation-delay: 4s;
+}
+.snowflake:nth-of-type(4) {
+  left: 40%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(10) .inner,
+.snowflake:nth-of-type(4) .inner {
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(5) {
+  left: 50%;
+  animation-delay: 3s;
+}
+.snowflake:nth-of-type(5) .inner {
+  animation-delay: 8s;
+}
+.snowflake:nth-of-type(6) {
+  left: 60%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(7) {
+  left: 70%;
+  animation-delay: 1s;
+}
+.snowflake:nth-of-type(7) .inner {
+  animation-delay: 2.5s;
+}
+.snowflake:nth-of-type(8) {
+  left: 80%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(9) {
+  left: 90%;
+  animation-delay: 1.5s;
+}
+.snowflake:nth-of-type(9) .inner {
+  animation-delay: 3s;
+}
+.snowflake:nth-of-type(10) {
+  left: 25%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(11) {
+  left: 65%;
+  animation-delay: 2.5s;
+}
