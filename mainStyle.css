@@ -71,21 +71,22 @@ h2 {
   box-sizing: border-box;
 }
 
-/* Original .carousel-container for desktop, without desktop flexbox overrides */
+/* Centered text class */
+
 .carousel-container {
   position: relative;
   height: 75rem; /* Original height for large screens */
-  overflow: hidden;
-  /* Removed display: flex, flex-direction, align-items from here for desktop */
+  overflow: hidden; /* This is crucial for containing the carousel */
+  /* Remove display: block if it was added, revert to what it was. */
 }
 
 /* Carousel */
 .carousel {
   display: flex;
-  height: 30rem; /* Height of the visible image carousel area */
+  height: 30rem;
   transition: transform 0.5s ease-in-out;
   width: 100%;
-  background-color: #393c28; /* This is where the darker background for the images should be */
+  /* Removed background-color from here - it goes on carousel-slide now */
 }
 
 .carousel-slide {
@@ -96,11 +97,16 @@ h2 {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  /* !!! THE FIX FOR THE BORDER/BACKGROUND STARTS HERE !!! */
+  background-color: #393c28; /* This is your dark background "border" */
+  padding: 20px; /* Adjust this padding to control the thickness of the background border */
+  /* Ensure image inside is slightly smaller to show this padding as a border */
+  /* This relies on your img having max-width/height < 100% of its slide container */
 }
 
 .carousel img {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 70%; /* Keep images smaller than slide to show background */
+  max-height: 70%; /* Keep images smaller than slide to show background */
   object-fit: contain;
 }
 
@@ -146,31 +152,30 @@ h2 {
 
 .carouselText {
   width: 100%;
-  position: absolute; /* Reinstated absolute positioning for desktop */
+  position: absolute; /* Reverting to absolute for desktop positioning */
   left: 0;
   height: fit-content;
-  padding: 0 1rem; /* Padding for the container itself */
+  padding: 0 1rem;
   box-sizing: border-box;
-  background-color: transparent; /* No background on the text container itself */
-  top: 32rem; /* Position it below the carousel image area */
+  background-color: transparent; /* Text areas should not have a background */
+  top: 32rem; /* Position it below the carousel image for desktop */
 }
 
-/* Reinstating floats for desktop */
 #what-you-can-get {
-  float: left; /* Re-apply float for large screens */
-  width: 48%; /* Adjust width to make space for other elements */
-  padding-right: 2%; /* Space between text and center */
+  float: left; /* Reinstating float for desktop */
+  width: 48%; /* Reinstating width */
+  padding: 0 1rem 0 0; /* Original padding */
   box-sizing: border-box;
 }
 
 #shop-info {
-  float: right; /* Re-apply float for large screens */
-  width: 48%; /* Adjust width */
-  padding-left: 2%; /* Space between center and text */
+  float: right; /* Reinstating float for desktop */
+  width: 48%; /* Reinstating width */
+  padding: 0 0 0 1rem; /* Original padding */
   box-sizing: border-box;
 }
 
-/* Clear floats after the carouselText to prevent overflow issues */
+/* Add float clearing for desktop */
 .carouselText::after {
   content: "";
   display: table;
@@ -184,20 +189,17 @@ h2 {
   justify-content: center;
   position: relative;
   flex-wrap: nowrap; /* Prevent wrapping on large screens */
-  align-items: flex-start; /* Align containers at the top */
+  align-items: flex-start; /* Align contents to the top */
 }
 
-/* Reverting specific flex styles for .carousel-container.left/.right for desktop */
-/* These properties will be applied by their general .carousel-container and then overridden by media queries */
+/* Removing any special flexbox declarations on carousel-container.left/right */
+/* They should revert to general .carousel-container styles for desktop */
 .carousel-container.left,
 .carousel-container.right {
-  display: block; /* Revert to block flow for containing floated text/image */
-  flex-direction: initial; /* Reset if flex was set here */
-  justify-content: initial;
-  align-items: initial;
-  height: 75rem; /* Keep default height or allow content to dictate if needed */
-  padding: 0; /* No padding on these wrappers, rely on inner elements */
-  background-color: transparent; /* Ensure no background here for desktop */
+  display: block; /* Ensures they behave as blocks for float containment */
+  height: 75rem; /* Revert to default height for these containers */
+  padding: 0; /* Resetting padding to ensure it's not interfering with child elements */
+  background-color: transparent; /* No background on these specific containers */
 }
 
 #address-image-link {
@@ -266,9 +268,9 @@ h2 {
   /* Mobile specific layout for individual carousel containers */
   .carousel-container.left,
   .carousel-container.right {
-    display: flex; /* Revert to flex for mobile stacking */
+    display: flex; /* Flex for mobile stacking */
     flex-direction: column; /* Stack image and text vertically */
-    padding: 0; /* Remove padding for mobile, use inner element padding */
+    padding: 0; /* Reset padding for mobile, use inner element padding */
     margin-bottom: 3rem; /* Add space between containers */
     height: auto; /* Allow height to adjust on mobile */
   }
@@ -277,14 +279,25 @@ h2 {
     /* General carousel-container properties for mobile */
     max-width: 90%;
     height: auto; /* Ensure this is auto for mobile */
-    overflow: visible; /* Allow content to overflow if needed, or adjust padding/margin */
+    overflow: hidden; /* Keep overflow hidden for mobile carousel */
+    /* If you want a "border" on mobile too, apply it here */
+    background-color: transparent; /* Reset to transparent for mobile too */
+    padding: 0; /* Reset padding to avoid double-up */
   }
 
   .carousel {
     width: 100%; /* Carousel image takes full width of container */
     height: 30rem; /* Keep height for the image area */
-    background-color: #393c28; /* Darker background for image area */
+    /* For mobile, if you want a border, carousel-slide will handle it */
   }
+
+  .carousel-slide {
+    /* This will apply the border-like background for mobile too */
+    background-color: #393c28; /* Your dark background "border" */
+    padding: 10px; /* Mobile border thickness */
+    box-sizing: border-box;
+  }
+
 
   .carousel-container .carouselText { /* Target carouselText inside carousel-container for mobile */
     position: static; /* Force text into normal document flow */
@@ -371,12 +384,13 @@ h2 {
   #buy {
     font-size: 1.8rem;
     line-height: 1.2;
+    padding: 0 0.5rem; /* Ensure padding on smallest screens */
   }
 
   .carouselText p {
     font-size: 1.2rem;
     line-height: 1.5;
-    padding: 0 0.5rem;
+    padding: 0; /* Reset, padding handled by carouselText container */
   }
 }
 

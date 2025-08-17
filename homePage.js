@@ -225,8 +225,13 @@ mainContent.appendChild(para4);
 let currentIndex1 = 0;
 
 function updateCarousel1() {
-  carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
+  // Remove active-slide from all slides first
+  carousel1Images.forEach(slide => slide.classList.remove('active-slide'));
+  // Add active-slide to the current one
+  carousel1Images[currentIndex1].classList.add('active-slide');
 
+  // Existing transform logic
+  carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
 }
 
 nextBtn1.addEventListener('click', () => {
@@ -248,6 +253,12 @@ prevBtn1.addEventListener('click', () => {
 });
 
 function updateCarousel2() {
+  // Remove active-slide from all slides first
+  carousel2Images.forEach(slide => slide.classList.remove('active-slide'));
+  // Add active-slide to the current one
+  carousel2Images[currentIndex2].classList.add('active-slide');
+
+  // Existing transform logic
   carousel2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
 }
 
@@ -294,3 +305,9 @@ imageLink.appendChild(addressImage);
 
 // Append the image link to the body
 document.body.appendChild(imageLink);
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ... your existing JS code setup ...
+  updateCarousel1(); // Call to apply border to the first slide
+  updateCarousel2(); // Call to apply border to the first slide
+});
