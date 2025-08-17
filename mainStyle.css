@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #386641;
+  background-color: #386641; /* Main body background */
 }
 
 p {
@@ -76,11 +76,11 @@ h2 {
 .carousel-container {
   position: relative;
   height: 75rem; /* Original height for large screens */
-  overflow: hidden; /* Important to keep carousel images contained */
-  display: flex; /* Keep flex for overall centering */
-  flex-direction: column;
-  align-items: center;
-  background-color: transparent; /* Ensure container itself doesn't hide text */
+  overflow: hidden;
+  /* Background color should only apply to the carousel band, not the whole container */
+  /* Remove background-color from here */
+  /* background-color: transparent; Removed */
+  display: block; /* Change to block to better contain floated elements */
 }
 
 /* Carousel */
@@ -89,8 +89,7 @@ h2 {
   height: 30rem;
   transition: transform 0.5s ease-in-out;
   width: 100%;
-  /* Set a background color for the carousel itself, not its container */
-  background-color: #393c28; /* Applied here now */
+  background-color: #393c28; /* This is where the darker background for the images should be */
 }
 
 .carousel-slide {
@@ -100,7 +99,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Removed background color here to avoid double-up or override */
   box-sizing: border-box;
 }
 
@@ -151,41 +149,143 @@ h2 {
 }
 
 .carouselText {
-  width: 100%; /* Default width */
-  position: absolute; /* Default for larger screens */
-  left: 0;
-  height: fit-content;
-  padding: 0 1rem;
+  /* This container needs to be relative or part of normal flow to allow floats */
+  position: relative; /* Changed to relative so children can float within it */
+  width: 100%; /* Take full width for positioning content */
+  height: auto; /* Let content dictate height */
+  padding: 0; /* Remove padding here, give it to inner P tags */
   box-sizing: border-box;
-  /* Ensure text aligns left by default on large screens */
-  text-align: left;
+  background-color: transparent; /* Ensure no background here */
 }
 
-/* Re-apply floats for large screens */
+/* The actual text content should have the floats */
 #what-you-can-get {
   float: left; /* Re-apply float for large screens */
-  width: 45%; /* Adjust width to make space for carousel */
-  margin-left: 2%; /* Add some spacing */
+  width: 48%; /* Adjust width to make space for carousel and margins */
+  padding: 0 1rem 0 0; /* Adjust padding to separate from image */
+  box-sizing: border-box;
 }
 
 #shop-info {
   float: right; /* Re-apply float for large screens */
-  width: 45%; /* Adjust width */
-  margin-right: 2%; /* Add some spacing */
+  width: 48%; /* Adjust width */
+  padding: 0 0 0 1rem; /* Adjust padding to separate from image */
+  box-sizing: border-box;
 }
 
+/* Clear floats after the carousel-row to prevent overflow issues */
+.carousel-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
 .carousel-row {
-  display: flex;
+  display: flex; /* Keep flex for overall horizontal layout */
   gap: 14rem;
   justify-content: center;
   position: relative;
   flex-wrap: nowrap; /* Prevent wrapping on large screens */
+  align-items: flex-start; /* Align items to the top in the row */
+  /* Remove direct children floats here if you want to float elements INSIDE carousel-container */
 }
 
-/* Adjustments for the image link wrapper for desktop */
+/* We need to re-think carousel-row content flow for desktop */
+/* The carousel image and the text blocks should be direct children of carousel-row and use floats,
+or the carousel-container itself should handle the flex layout with nested floating content.
+Given the existing HTML, the text is outside the direct carousel, but inside carousel-container.
+Let's try to contain both within the carousel-container for better control. */
+
+/* Instead of floating paragraphs outside the carousel-container,
+let's put them side-by-side with the carousel itself inside a wrapper */
+.carousel-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align contents at the top */
+  width: 100%;
+  margin-top: 2rem; /* Space between the intro paragraph and this section */
+  flex-wrap: nowrap; /* Prevent wrapping on large screens */
+}
+
+.carousel-content-wrapper > div {
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+/* Your .carousel-container currently holds both the carousel and the carouselText */
+/* Let's redefine its role for larger screens to properly align the parts */
+
+
+/* Re-evaluate the structure for large screens to ensure side-by-side text and carousel */
+/* The problem is that carousel-row expects its direct children to align.
+Right now, carousel1Container and carousel2Container are its children.
+Each of those contains a carousel and text. */
+
+/* Let's make the text paragraphs float *within* their respective carousel containers */
+/* This requires some restructuring of the HTML or adjusting how CSS targets it. */
+/* Given current HTML, let's try to modify the carouselText and the carousel-container. */
+
+/* The problem is likely that carouselText is positioned relative to its container,
+but its parent is still the column-flexed carousel-container on desktop.
+We need the floats to apply relative to the carousel itself, or a parent that allows floats. */
+
+
+/* Try modifying the `.carousel-container` to truly be a flex container on large screens
+that contains the carousel image area AND the text areas */
+
+/* Let's define specific containers for text and image within each carousel-container for desktop */
+.carousel-container.left {
+  display: flex;
+  flex-direction: row; /* Layout image and text side-by-side on left */
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  height: auto; /* Let content dictate height */
+  padding: 2rem; /* Add padding for content inside */
+  background-color: #386641; /* Body background for this section */
+}
+
+.carousel-container.right {
+  display: flex;
+  flex-direction: row-reverse; /* Layout image and text side-by-side (reversed) on right */
+  justify-content: space-between;
+  align-items: flex-start;
+  height: auto;
+  padding: 2rem;
+  background-color: #386641; /* Body background for this section */
+}
+
+/* Adjust the carousel image part within the left/right containers */
+.carousel-container .carousel {
+  width: 50%; /* Carousel image takes half width */
+  flex-shrink: 0;
+  height: 30rem; /* Keep image height consistent */
+  background-color: #393c28; /* Darker background for image area */
+  margin: 0; /* Remove default margins */
+}
+
+/* Adjust the text part within the left/right containers */
+.carousel-container .carouselText {
+  position: static; /* Text is now part of the normal flex flow */
+  width: 45%; /* Text takes remaining half width */
+  padding: 0; /* No padding on this wrapper */
+  margin: 0; /* No margin on this wrapper */
+  background-color: transparent; /* No background on text wrapper */
+}
+
+/* Ensure the paragraphs themselves are styled correctly */
+.carouselText p {
+  padding: 0; /* Remove any padding from the p tags if it's handled by container */
+  margin: 0; /* Remove default margins from p tags for cleaner spacing */
+  text-align: left; /* Keep left aligned on desktop */
+  background-color: transparent; /* Ensure no background on text itself */
+  color: #f2e8cf; /* Ensure text color */
+}
+
+
 #address-image-link {
-  display: block; /* Ensure it's a block */
-  text-align: center; /* Center the image */
+  display: block;
+  text-align: center;
 }
 
 #address-image {
@@ -196,11 +296,6 @@ h2 {
   margin: 3rem auto;
 }
 
-.carousel img {
-  max-height: 60%;
-  max-width: 60%;
-}
-
 .carousel-btn {
   height: 3rem;
   width: 3rem;
@@ -209,11 +304,11 @@ h2 {
 
 /* CONSOLIDATED MEDIA QUERIES */
 
-@media (max-width: 1776px) {
+/* @media (max-width: 1776px) {
   .carousel-container {
-    height: 70rem;
+    /* No fixed height here if using flex auto height for left/right 
   }
-}
+} */
 
 @media (max-width: 1490px) {
   p {
@@ -226,19 +321,23 @@ h2 {
     font-size: 1.5rem;
   }
 
+  /* Adjust width for text within carouselText */
+  .carousel-container .carouselText {
+    width: 43%; /* Slightly less width for text as screen shrinks */
+  }
+
+  /* Adjust carousel width */
+  .carousel-container .carousel {
+    width: 52%; /* Slightly more width for carousel */
+  }
+
   .carousel img {
     max-height: 60%;
     max-width: 60%;
   }
 
-  /* Adjust #what-you-can-get and #shop-info for these mid-screens */
-  #what-you-can-get,
-  #shop-info {
-    width: 48%; /* Give them more room */
-  }
-
   .carousel-row {
-    gap: 5rem; /* Reduce gap as screen gets smaller */
+    gap: 3rem; /* Reduce gap as screen gets smaller */
   }
 }
 
@@ -251,20 +350,37 @@ h2 {
     gap: 3rem; /* Add some space between stacked carousels */
   }
 
-  .carousel-container {
-    max-width: 90%;
-    height: auto; /* Allow content to dictate height */
-    margin-bottom: 0; /* Remove extra margin at the bottom of the container */
+  /* Mobile specific layout for individual carousel containers */
+  .carousel-container.left,
+  .carousel-container.right {
+    flex-direction: column; /* Stack image and text vertically */
+    padding: 0; /* Remove padding for mobile, use inner element padding */
+    margin-bottom: 3rem; /* Add space between containers */
   }
 
-  /* Ensure background color is consistent when stacked */
-  .carousel {
-    background-color: #393c28; /* Make sure it's set for mobile too */
+  .carousel-container .carousel {
+    width: 100%; /* Carousel image takes full width of container */
+    height: 30rem; /* Keep height for the image area */
+    background-color: #393c28; /* Darker background for image area */
   }
 
-  .carousel-slide {
-    background-color: transparent; /* Slide should not have background */
+  .carousel-container .carouselText {
+    position: static; /* Force text into normal document flow */
+    width: 90%; /* Text takes most of the container width */
+    padding: 1rem; /* Padding for text content */
+    margin-top: 2rem; /* Space between carousel image and text */
+    text-align: left; /* Keep left aligned for mobile readability */
+    background-color: transparent; /* No background on text wrapper */
   }
+
+  /* Ensure paragraphs inside carouselText also align left and have default styling */
+  .carouselText p {
+    text-align: left;
+    background-color: transparent;
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+  }
+
 
   .carousel img {
     max-height: 80%;
@@ -275,26 +391,13 @@ h2 {
     font-size: 2rem;
   }
 
-  .carouselText {
-    position: static; /* Force into normal document flow */
-    width: 90%;
-    padding: 1rem;
-    margin-top: 2rem; /* Space between carousel image and text */
-    text-align: left; /* Keep left aligned for mobile readability */
-  }
-
-  .carouselText p {
-    text-align: left; /* Explicitly ensure paragraphs are left-aligned */
-  }
-
-
-  /* Remove floats and set full width for mobile */
+  /* No floats for mobile */
   #what-you-can-get,
   #shop-info {
     float: none;
     width: 100%;
-    margin-left: auto; /* Center with auto margins if needed */
-    margin-right: auto;
+    margin: 0 auto; /* Center with auto margins if needed */
+    padding: 0; /* Reset padding for mobile, handled by carouselText */
   }
 
   .left,
