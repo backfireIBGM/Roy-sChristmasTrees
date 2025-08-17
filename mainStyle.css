@@ -17,7 +17,7 @@ p {
   font-size: 2.5rem;
   color: #f2e8cf;
   line-height: 3rem;
-  text-align: left;
+  text-align: left; /* Default for all p tags */
 }
 
 h1 {
@@ -71,7 +71,7 @@ h2 {
   box-sizing: border-box; /* Ensures padding is included in total width/height */
 }
 
-/* Centered text class */
+/* Centered text class (this might be overridden by specific elements) */
 
 .carousel-container {
   position: relative;
@@ -159,7 +159,6 @@ h2 {
 #what-you-can-get,
 #shop-info {
   float: none; /* Remove float for mobile */
-  text-align: center; /* Center text on mobile */
   width: 100%; /* Take full width */
 }
 
@@ -240,10 +239,16 @@ h2 {
 
   .carouselText {
     position: static;
-    width: 90%;
-    text-align: center;
-    padding: 1rem;
+    width: 90%; /* Keep this width */
+    padding: 1rem; /* Maintain padding */
     margin-top: 2rem;
+    /* This is the key change for left alignment on mobile */
+    text-align: left; /* Changed from center to left */
+  }
+
+  /* Ensure paragraphs inside carouselText also align left */
+  .carouselText p {
+    text-align: left;
   }
 
   .left,
@@ -251,11 +256,10 @@ h2 {
     height: auto;
   }
 
-  /* Specific adjustment for the final h2 (#buy) on smaller screens */
   #buy {
-    font-size: 2.5rem; /* Adjusted size for mobile */
-    line-height: 1.3; /* Adjust line-height for better readability */
-    padding: 0 1rem; /* Add horizontal padding to prevent text from hitting edges */
+    font-size: 2.5rem;
+    line-height: 1.3;
+    padding: 0 1rem;
     box-sizing: border-box;
   }
 }
@@ -265,19 +269,18 @@ h2 {
     font-size: 1.5rem;
   }
 
-  /* Adjust h2 size for even smaller screens if needed, otherwise inherit from 1124px */
   h2 {
-    font-size: 3.5rem; /* Default h2 for this breakpoint, but #buy will override if specified */
-    text-align: center;
+    font-size: 3.5rem;
+    text-align: center; /* General h2 remains centered */
   }
 
-  /* Further adjust text for smaller mobile screens */
   .carouselText p {
     font-size: 1.3rem;
+    text-align: left; /* Explicitly keep left for smaller screens */
   }
 
   #buy {
-    font-size: 2rem; /* Even smaller for very small phones */
+    font-size: 2rem;
   }
 }
 
@@ -286,9 +289,8 @@ h2 {
     height: auto;
   }
 
-  /* The 663px breakpoint's h2 will take precedence unless #buy is more specific */
   h2 {
-    font-size: 2.5rem; /* Adjusted default h2 for this breakpoint */
+    font-size: 2.5rem;
     text-align: center;
   }
 
@@ -297,8 +299,14 @@ h2 {
   }
 
   #buy {
-    font-size: 1.8rem; /* Fine-tune for the smallest screens */
+    font-size: 1.8rem;
     line-height: 1.2;
+  }
+
+  .carouselText p {
+    font-size: 1.2rem; /* Maybe a little smaller for very tight spaces */
+    line-height: 1.5; /* Adjust line-height for readability */
+    padding: 0 0.5rem; /* Slightly less padding if needed for super small screens */
   }
 }
 
