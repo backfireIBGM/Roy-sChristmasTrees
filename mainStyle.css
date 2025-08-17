@@ -29,9 +29,11 @@ h1 {
 
 h2 {
   color: white;
-  font-size: 5rem;
+  font-size: 5rem; /* Default size for h2 */
   width: 100%;
   text-align: center;
+  margin-top: 5rem; /* Good default spacing */
+  margin-bottom: 3rem;
 }
 
 * {
@@ -47,7 +49,7 @@ h2 {
 #address-text a {
   color: inherit; /* Inherits the color from the h1 */
 }
-  
+
 #address-text a:hover {
   text-decoration: underline; /* Adds underline on hover */
   cursor: pointer;
@@ -64,6 +66,9 @@ h2 {
 .main-content {
   width: 90%;
   margin: 0 auto;
+  padding-top: 2rem; /* Added padding to the top of main content */
+  padding-bottom: 5rem; /* Added more padding to the bottom */
+  box-sizing: border-box; /* Ensures padding is included in total width/height */
 }
 
 /* Centered text class */
@@ -72,6 +77,9 @@ h2 {
   position: relative;
   height: 75rem;
   overflow: hidden;
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack children vertically by default */
+  align-items: center; /* Center horizontally */
 }
 
 /* Carousel */
@@ -79,6 +87,7 @@ h2 {
   display: flex;
   height: 30rem;
   transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
 .carousel-slide {
@@ -134,24 +143,24 @@ h2 {
 }
 
 #into {
-  padding: 50%;
+  padding: 5%;
   text-align: left;
 }
 
 .carouselText {
   width: 100%;
-  position: absolute;
+  position: absolute; /* Default for larger screens */
   left: 0;
   height: fit-content;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-#what-you-can-get {
-  float: left;
-  
-}
-
+#what-you-can-get,
 #shop-info {
-  float: right;
+  float: none; /* Remove float for mobile */
+  text-align: center; /* Center text on mobile */
+  width: 100%; /* Take full width */
 }
 
 .carousel-row {
@@ -159,14 +168,17 @@ h2 {
   gap: 14rem;
   justify-content: center;
   position: relative;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 #address-image {
-  padding-left: 15%;
   width: 70%;
+  max-width: 300px;
   height: auto;
+  display: block;
+  margin: 3rem auto;
 }
-  
+
 .carousel img {
   max-height: 60%;
   max-width: 60%;
@@ -178,17 +190,18 @@ h2 {
   font-size: 3rem;
 }
 
+/* CONSOLIDATED MEDIA QUERIES */
+
 @media (max-width: 1776px) {
-    .carousel-container
-    {
-      height: 70rem;
-    }
+  .carousel-container {
+    height: 70rem;
+  }
 }
 
 @media (max-width: 1490px) {
-    p {
-      font-size: 2rem;
-    }
+  p {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 1260px) {
@@ -206,52 +219,89 @@ h2 {
   .carousel-row {
     flex-direction: column;
     align-items: center;
- }
+    gap: 0;
+  }
 
   .carousel-container {
-  max-width: 50rem;
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 3rem;
+    padding-bottom: 0;
+  }
+
+  .carousel img {
+    max-height: 80%;
+    max-width: 80%;
   }
 
   p {
     font-size: 2rem;
-    }
-
-  .left {
-    height: 50rem;
   }
+
+  .carouselText {
+    position: static;
+    width: 90%;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .left,
   .right {
-    height: 50rem;
+    height: auto;
+  }
+
+  /* Specific adjustment for the final h2 (#buy) on smaller screens */
+  #buy {
+    font-size: 2.5rem; /* Adjusted size for mobile */
+    line-height: 1.3; /* Adjust line-height for better readability */
+    padding: 0 1rem; /* Add horizontal padding to prevent text from hitting edges */
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 900px) {
   p {
     font-size: 1.5rem;
-    }
+  }
 
+  /* Adjust h2 size for even smaller screens if needed, otherwise inherit from 1124px */
   h2 {
-    text-align: left;
-    font-size: 4rem;
+    font-size: 3.5rem; /* Default h2 for this breakpoint, but #buy will override if specified */
+    text-align: center;
+  }
+
+  /* Further adjust text for smaller mobile screens */
+  .carouselText p {
+    font-size: 1.3rem;
+  }
+
+  #buy {
+    font-size: 2rem; /* Even smaller for very small phones */
   }
 }
 
 @media (max-width: 663px) {
   .left {
-    height: 65rem;
+    height: auto;
   }
 
+  /* The 663px breakpoint's h2 will take precedence unless #buy is more specific */
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Adjusted default h2 for this breakpoint */
+    text-align: center;
+  }
+
+  .carousel-container {
+    max-width: 95%;
+  }
+
+  #buy {
+    font-size: 1.8rem; /* Fine-tune for the smallest screens */
+    line-height: 1.2;
   }
 }
 
-
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
-}
 
 .snowflake {
   color: #fff;
