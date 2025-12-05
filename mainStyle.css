@@ -10,7 +10,8 @@
 }
 
 body {
-  background-color: #386641;
+  background-color: #386641; /* Main body background */
+  overflow-x: hidden; /* <--- NEW: Crucial to prevent horizontal scroll for body */
 }
 
 p {
@@ -32,12 +33,13 @@ h2 {
   font-size: 5rem;
   width: 100%;
   text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 * {
   font-family: 'Libre Caslon Text';
 }
-
 
 #address-text {
   text-align: center;
@@ -47,7 +49,7 @@ h2 {
 #address-text a {
   color: inherit; /* Inherits the color from the h1 */
 }
-  
+
 #address-text a:hover {
   text-decoration: underline; /* Adds underline on hover */
   cursor: pointer;
@@ -64,14 +66,20 @@ h2 {
 .main-content {
   width: 90%;
   margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+  overflow: hidden; /* <--- NEW: Ensure main content clips too */
 }
 
 /* Centered text class */
 
 .carousel-container {
   position: relative;
-  height: 75rem;
-  overflow: hidden;
+  height: auto;
+  min-height: 75rem;
+  overflow: hidden; /* <--- KEEP: This container should clip */
+  width: 100%; /* <--- NEW: Explicitly set 100% width for desktop */
 }
 
 /* Carousel */
@@ -79,23 +87,33 @@ h2 {
   display: flex;
   height: 30rem;
   transition: transform 0.5s ease-in-out;
+  background-color: transparent;
 }
 
 .carousel-slide {
-  min-width: 100%; /* Each slide takes up 100% of visible container */
-  max-width: 100%;
-  flex-shrink: 0; /* Prevent slides from shrinking */
+  flex: 0 0 100%; /* Don't grow, don't shrink, take exactly 100% of parent's width */
+  min-width: 100%; /* Ensure it's at least 100% */
+  max-width: 100%; /* And not more than 100% */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #393c28;
   box-sizing: border-box;
+  background-color: transparent;
+  padding: 0;
 }
 
+/* Reverted .carousel img styles */
 .carousel img {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 70%; /* Revert to original size constraint */
+  max-height: 70%; /* Revert to original size constraint */
   object-fit: contain;
+  width: auto; /* Let it scale based on max-width/height */
+  height: auto; /* Let it scale based on max-width/height */
+  display: block; /* Ensures it's a block element */
+  margin: auto; /* Centers the image if it's smaller than its container */
+
+  border: 20px solid #393c28; /* Your dark border color and thickness */
+  box-sizing: border-box; /* Include border in the element's total size */
 }
 
 /* Carousel Controls (Next/Prev buttons) */
@@ -103,7 +121,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 14rem; /* Center in the carousel area */
+  top: 14rem;
   width: 100%;
   box-sizing: border-box;
   padding-left: 1rem;
@@ -134,42 +152,68 @@ h2 {
 }
 
 #into {
-  padding: 50%;
+  padding: 5%;
   text-align: left;
 }
 
 .carouselText {
-  width: 100%;
-  position: absolute;
-  left: 0;
+  width: 95%;
+  margin-top: 2rem;
   height: fit-content;
+  padding: 0 2.5%;
+  box-sizing: border-box;
+  background-color: transparent;
+  display: block;
 }
 
 #what-you-can-get {
-  float: left;
-  
+  width: 100%;
+  padding-right: 0;
+  box-sizing: border-box;
 }
 
 #shop-info {
-  float: right;
+  width: 100%;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+
+.carouselText::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .carousel-row {
   display: flex;
-  gap: 14rem;
+  gap: 14rem; /* Main desktop gap */
   justify-content: center;
   position: relative;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.carousel-container.left,
+.carousel-container.right {
+  display: block;
+  height: auto;
+  min-height: 75rem;
+  padding: 0;
+  background-color: transparent;
+  margin-bottom: 2rem;
+}
+
+#address-image-link {
+  display: block;
+  text-align: center;
 }
 
 #address-image {
-  padding-left: 15%;
-  width: 70%;
+  width: 85%; /* Keep 85% width for desktop */
+  max-width: none; /* <--- NEW: Crucially remove this hard cap */
   height: auto;
-}
-  
-.carousel img {
-  max-height: 60%;
-  max-width: 60%;
+  display: block;
+  margin: 3rem auto;
 }
 
 .carousel-btn {
@@ -216,16 +260,16 @@ h2 {
 }
 
 @media (max-width: 1776px) {
-    .carousel-container
-    {
-      height: 70rem;
-    }
+  .carousel-container {
+    min-height: 70rem;
+    height: auto;
+  }
 }
 
 @media (max-width: 1490px) {
-    p {
-      font-size: 2rem;
-    }
+  p {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 1260px) {
@@ -234,55 +278,168 @@ h2 {
   }
 
   .carousel img {
-    max-height: 60%;
-    max-width: 60%;
+    max-width: calc(70% - 40px);
+    max-height: calc(70% - 40px);
+  }
+
+  .carousel-row {
+    gap: 5rem; /* Reduce gap for this breakpoint */
+  }
+
+  .carouselText {
+    width: 95%;
+    padding: 0 2.5%;
+    margin-top: 1rem;
   }
 }
 
+/* Mobile breakpoint starts here */
 @media (max-width: 1124px) {
   .carousel-row {
     flex-direction: column;
     align-items: center;
- }
+    gap: 3rem;
+  }
+
+  .carousel-container.left,
+  .carousel-container.right {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 3rem;
+    height: auto;
+    min-height: initial;
+    overflow: visible;
+  }
 
   .carousel-container {
-  max-width: 50rem;
+    max-width: 90%;
+    height: auto;
+    min-height: initial;
+    overflow: hidden; /* <--- KEEP: This is where mobile clipping happens */
+    width: 100%;
+  }
+
+  .carousel {
+    height: 25rem;
+    background-color: transparent;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  /* Mobile adjustments for image */
+  .carousel img {
+    max-width: calc(90% - 20px);
+    max-height: calc(90% - 20px);
+    border: 10px solid #393c28; /* Smaller border for mobile */
+  }
+
+  #address-image {
+    width: 90%; /* Keep 90% for mobile */
+    max-width: none; /* <--- NEW: Ensure it's not capped on mobile either */
+  }
+
+  .carousel-container .carouselText {
+    position: static;
+    width: 95%;
+    padding: 1rem 2.5%;
+    margin-top: 2rem;
+    text-align: left;
+    background-color: transparent;
+  }
+
+  .carouselText p {
+    text-align: left;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  #what-you-can-get,
+  #shop-info {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
   }
 
   p {
-    font-size: 2rem;
-    }
-
-  .left {
-    height: 50rem;
+    font-size: 1.8rem;
   }
+
+  .left,
   .right {
-    height: 50rem;
+    height: auto;
+  }
+
+  #buy {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+}
+
+/* NEW: Tweak gap for narrower screens, specifically to handle the second carousel better */
+@media (max-width: 1000px) {
+  .carousel-row {
+    gap: 2rem; /* Even smaller gap to prevent images from squeezing */
   }
 }
 
 @media (max-width: 900px) {
   p {
     font-size: 1.5rem;
-    }
+  }
 
   h2 {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  .carouselText p {
+    font-size: 1.3rem;
     text-align: left;
-    font-size: 4rem;
+  }
+
+  #buy {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 663px) {
   .left {
-    height: 65rem;
+    height: auto;
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .carousel-container {
+    max-width: 95%;
+  }
+
+  #buy {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    padding: 0 0.5rem;
+  }
+
+  
+
+  .carouselText p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding: 0;
   }
 }
 
-
 .snowflake {
   color: #fff;
   font-size: 1em;
@@ -290,11 +447,118 @@ h2 {
   text-shadow: 0 0 5px #000;
 }
 
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
+.snowflake,
+.snowflake .inner {
+  animation-iteration-count: infinite;
+  animation-play-state: running;
 }
-
-.snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;pointer-events:none;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
+@keyframes snowflakes-fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+@keyframes snowflakes-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+}
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  pointer-events: none;
+  animation-name: snowflakes-shake;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+}
+.snowflake .inner {
+  animation-duration: 10s;
+  animation-name: snowflakes-fall;
+  animation-timing-function: linear;
+}
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(0) .inner {
+  animation-delay: 0s;
+}
+.snowflake:first-of-type {
+  left: 10%;
+  animation-delay: 1s;
+}
+.snowflake:first-of-type .inner,
+.snowflake:nth-of-type(8) .inner {
+  animation-delay: 1s;
+}
+.snowflake:nth-of-type(2) {
+  left: 20%;
+  animation-delay: 0.5s;
+}
+.snowflake:nth-of-type(2) .inner,
+.snowflake:nth-of-type(6) .inner {
+  animation-delay: 6s;
+}
+.snowflake:nth-of-type(3) {
+  left: 30%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(11) .inner,
+.snowflake:nth-of-type(3) .inner {
+  animation-delay: 4s;
+}
+.snowflake:nth-of-type(4) {
+  left: 40%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(10) .inner,
+.snowflake:nth-of-type(4) .inner {
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(5) {
+  left: 50%;
+  animation-delay: 3s;
+}
+.snowflake:nth-of-type(5) .inner {
+  animation-delay: 8s;
+}
+.snowflake:nth-of-type(6) {
+  left: 60%;
+  animation-delay: 2s;
+}
+.snowflake:nth-of-type(7) {
+  left: 70%;
+  animation-delay: 1s;
+}
+.snowflake:nth-of-type(7) .inner {
+  animation-delay: 2.5s;
+}
+.snowflake:nth-of-type(8) {
+  left: 80%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(9) {
+  left: 90%;
+  animation-delay: 1.5s;
+}
+.snowflake:nth-of-type(9) .inner {
+  animation-delay: 3s;
+}
+.snowflake:nth-of-type(10) {
+  left: 25%;
+  animation-delay: 0s;
+}
+.snowflake:nth-of-type(11) {
+  left: 65%;
+  animation-delay: 2.5s;
+}
