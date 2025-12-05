@@ -55,7 +55,9 @@ document.body.appendChild(mainContent);
 const para1 = document.createElement('p');
 para1.id = 'intro';
 para1.className = 'center-text';
-para1.textContent = "Nestled in the scenic hills of Honeydew, California, Roy's Christmas Trees has grown premium Silvertip (Red Fir) trees since 1982. Founded and run by Roy Forcier, our small, family-run tree farm specializes in stump-cultured trees. We also plant tree seedlings ensuring a sustainable and naturally beautiful selection for your holiday celebrations.";
+para1.textContent = "Nestled in the scenic hills of Honeydew, California, Roy's Christmas Trees has grown premium " +
+  "Silvertip (Red Fir) trees since 1982. Founded and run by Roy Forcier, our small, family-run tree farm specializes " +
+  "in stump-cultured trees. We also plant tree seedlings ensuring a sustainable and naturally beautiful selection for your holiday celebrations.";
 mainContent.appendChild(para1);
 
 // ========== FIRST CAROUSEL (Left Side) ==========
@@ -123,7 +125,9 @@ leftText.className = 'carouselText';
 
 const para2 = document.createElement('p');
 para2.id = 'what-you-can-get';
-para2.textContent = "Each season, we bring our freshly harvested trees to 5795 Grizzly Bluff Road in Ferndale, California, in the heart of the Ferndale Bottoms. Alongside our trees, we offer handmade fresh Christmas wreaths, crafted with care by Elizabeth Forcier, bringing the fragrance and charm of the season to your home.";
+para2.textContent = "Each season, we bring our freshly harvested trees to 5795 Grizzly Bluff Road in Ferndale, " +
+  "California, in the heart of the Ferndale Bottoms. Alongside our trees, we offer handmade fresh Christmas wreaths, " +
+  "crafted with care by Elizabeth Forcier, bringing the fragrance and charm of the season to your home.";
 
 leftText.appendChild(para2);
 
@@ -196,7 +200,8 @@ rightText.className = 'carouselText';
 
 const para3 = document.createElement('p');
 para3.id = 'shop-info';
-para3.textContent = "While selecting your tree, step into our Ornament and Wreath shop, housed in the vestibule of a beautifully converted Presbyterian church, where you'll find unique holiday treasures to complement your festivities.";
+para3.textContent = "While selecting your tree, step into our Ornament and Wreath shop, housed in the vestibule " +
+  "of a beautifully converted Presbyterian church , where you'll find unique holiday treasures to complement your festivities.";
 
 rightText.appendChild(para3);
 
@@ -218,6 +223,38 @@ para4.id = 'buy';
 para4.className = 'center-text';
 para4.textContent = "For a tree with history, heart, and Humboldt-grown tradition, visit Roy's Christmas Trees.";
 mainContent.appendChild(para4);
+
+// --- CUSTOMER REVIEW ---
+
+const reviewSection = document.createElement('div');
+reviewSection.className = 'customer-review-section';
+
+const reviewHeading = document.createElement('h2');
+reviewHeading.textContent = 'What Our Customers Say:';
+reviewSection.appendChild(reviewHeading);
+
+// Create the customerQuote first
+const customerQuote = document.createElement('blockquote');
+customerQuote.className = 'customer-quote';
+customerQuote.textContent = "“Choosing our tree from Roy's is a family tradition. They always have very nine trees that complete the holidays” -River";
+
+// Append the customerQuote to the reviewSection BEFORE the image container
+reviewSection.appendChild(customerQuote); // <--- HERE IT IS, ABOVE THE IMAGE
+
+// Now create and append the image container
+const reviewImageContainer = document.createElement('div');
+reviewImageContainer.className = 'review-image-container';
+
+const customerReviewImage = document.createElement('img');
+customerReviewImage.src = 'customer.jpg';
+customerReviewImage.alt = 'Customer review image.'; // Alt text remains
+customerReviewImage.className = 'customer-review-image';
+reviewImageContainer.appendChild(customerReviewImage);
+
+// Append the image container to the reviewSection
+reviewSection.appendChild(reviewImageContainer);
+
+mainContent.appendChild(reviewSection);
 
 // ========== CAROUSEL FUNCTIONALITY ==========
 

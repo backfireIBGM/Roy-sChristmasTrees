@@ -178,6 +178,43 @@ h2 {
   font-size: 3rem;
 }
 
+/* Customer Review Section */
+.customer-review-section {
+  width: 90%; /* Match main content width */
+  margin: 5rem auto; /* Add vertical spacing and center */
+  text-align: center; /* Center the heading and image */
+}
+
+.customer-review-section h2 {
+  font-size: 3.5rem; /* Adjust heading size */
+  color: #f2e8cf; /* Use a color that fits your theme */
+  margin-bottom: 2rem;
+}
+
+.review-image-container {
+  display: flex;
+  justify-content: center; /* Center the image within its container */
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.customer-review-image {
+  max-width: 80%; /* Adjust as needed */
+  height: auto;
+  border: 5px solid #a6a6a6; /* Optional: Add a subtle border */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+}
+
+.customer-quote {
+  font-size: 2.2rem; /* Slightly smaller than main paragraphs */
+  font-style: italic;
+  color: #f2e8cf;
+  margin: 2rem auto 1rem auto; /* Top, auto left/right, bottom, auto left/right */
+  max-width: 70%; /* Keep quote from being too wide */
+  line-height: 1.4;
+}
+
 @media (max-width: 1776px) {
     .carousel-container
     {
